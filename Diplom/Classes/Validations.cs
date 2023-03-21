@@ -18,7 +18,7 @@ namespace Diplom
 
                 if (!mRegxExpression.IsMatch(email.Trim()))
                 {
-                    //MessageBox.Show("E-mail address format is not correct.", "MojoCRM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //MessageBox.Show("Неправильный формат адреса электронной почты.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
                 else

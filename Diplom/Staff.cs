@@ -21,6 +21,11 @@ namespace Diplom
         private void Staff_Load(object sender, EventArgs e)
         {
             GetStaffList();
+
+            if (AuthorizedUserInfo.UserRole != "Администратор")
+            {
+                btn_delete.Hide();
+            }
         }
 
         private void GetStaffList()
@@ -175,18 +180,34 @@ namespace Diplom
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btn_delete_Click(object sender, EventArgs e)
         {
-            if (Validations.ValidateEmail(tb_email.Text) == false)
+            using (MySqlConnection Connection = new MySqlConnection(Properties.Settings.Default.DBConnectionString))
             {
-                MessageBox.Show("E-mail address format is not correct.", "MojoCRM", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                tb_email.Focus();
+                MySqlCommand cmd = new MySqlCommand("DeleteStaff", Connection);
+                int converter;
+                bool parseOK = Int32.TryParse(cb_staff.SelectedValue.ToString(), out converter);
+                try
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@u_id", converter);
+                    Connection.Open();
+                    if (cmd.ExecuteNonQuery() > 0)
+                    {
+                        MessageBox.Show("Данные сотрудника успешно удалены.", "Успех", MessageBoxButtons.OK);
+                        GetStaffList();
+                    }
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+                finally
+                {
+                    cmd.Dispose();
+                    Connection.Close();
+                }
             }
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

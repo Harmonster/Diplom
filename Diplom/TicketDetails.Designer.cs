@@ -32,10 +32,8 @@ namespace Diplom
             this.label1 = new System.Windows.Forms.Label();
             this.tb_id = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.tb_type = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.cb_status = new System.Windows.Forms.ComboBox();
-            this.tb_prio = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.tb_author = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -48,6 +46,10 @@ namespace Diplom
             this.btn_update = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.cb_type = new System.Windows.Forms.ComboBox();
+            this.cb_prio = new System.Windows.Forms.ComboBox();
+            this.tb_type = new System.Windows.Forms.TextBox();
+            this.tb_prio = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -81,15 +83,6 @@ namespace Diplom
             this.label2.TabIndex = 2;
             this.label2.Text = "Тип";
             // 
-            // tb_type
-            // 
-            this.tb_type.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tb_type.Location = new System.Drawing.Point(128, 119);
-            this.tb_type.Name = "tb_type";
-            this.tb_type.ReadOnly = true;
-            this.tb_type.Size = new System.Drawing.Size(136, 28);
-            this.tb_type.TabIndex = 3;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -109,15 +102,6 @@ namespace Diplom
             this.cb_status.Name = "cb_status";
             this.cb_status.Size = new System.Drawing.Size(136, 29);
             this.cb_status.TabIndex = 5;
-            // 
-            // tb_prio
-            // 
-            this.tb_prio.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tb_prio.Location = new System.Drawing.Point(128, 188);
-            this.tb_prio.Name = "tb_prio";
-            this.tb_prio.ReadOnly = true;
-            this.tb_prio.Size = new System.Drawing.Size(136, 28);
-            this.tb_prio.TabIndex = 7;
             // 
             // label4
             // 
@@ -242,12 +226,54 @@ namespace Diplom
             this.panel2.Size = new System.Drawing.Size(323, 42);
             this.panel2.TabIndex = 15;
             // 
+            // cb_type
+            // 
+            this.cb_type.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cb_type.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cb_type.FormattingEnabled = true;
+            this.cb_type.Location = new System.Drawing.Point(128, 118);
+            this.cb_type.Name = "cb_type";
+            this.cb_type.Size = new System.Drawing.Size(136, 29);
+            this.cb_type.TabIndex = 16;
+            // 
+            // cb_prio
+            // 
+            this.cb_prio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cb_prio.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cb_prio.FormattingEnabled = true;
+            this.cb_prio.Location = new System.Drawing.Point(128, 187);
+            this.cb_prio.Name = "cb_prio";
+            this.cb_prio.Size = new System.Drawing.Size(136, 29);
+            this.cb_prio.TabIndex = 17;
+            // 
+            // tb_type
+            // 
+            this.tb_type.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tb_type.Location = new System.Drawing.Point(128, 119);
+            this.tb_type.Name = "tb_type";
+            this.tb_type.ReadOnly = true;
+            this.tb_type.Size = new System.Drawing.Size(136, 28);
+            this.tb_type.TabIndex = 18;
+            // 
+            // tb_prio
+            // 
+            this.tb_prio.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tb_prio.Location = new System.Drawing.Point(128, 188);
+            this.tb_prio.Name = "tb_prio";
+            this.tb_prio.ReadOnly = true;
+            this.tb_prio.Size = new System.Drawing.Size(136, 28);
+            this.tb_prio.TabIndex = 20;
+            // 
             // TicketDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.ClientSize = new System.Drawing.Size(323, 465);
+            this.Controls.Add(this.tb_prio);
+            this.Controls.Add(this.tb_type);
+            this.Controls.Add(this.cb_prio);
+            this.Controls.Add(this.cb_type);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label7);
@@ -256,11 +282,9 @@ namespace Diplom
             this.Controls.Add(this.label6);
             this.Controls.Add(this.tb_author);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.tb_prio);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.cb_status);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.tb_type);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.tb_id);
             this.Controls.Add(this.label1);
@@ -281,10 +305,8 @@ namespace Diplom
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox tb_id;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox tb_type;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cb_status;
-        private System.Windows.Forms.TextBox tb_prio;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox tb_author;
         private System.Windows.Forms.Label label5;
@@ -297,5 +319,9 @@ namespace Diplom
         private System.Windows.Forms.Button btn_update;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.ComboBox cb_type;
+        private System.Windows.Forms.ComboBox cb_prio;
+        private System.Windows.Forms.TextBox tb_type;
+        private System.Windows.Forms.TextBox tb_prio;
     }
 }

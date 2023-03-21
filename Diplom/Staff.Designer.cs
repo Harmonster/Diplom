@@ -29,11 +29,12 @@ namespace Diplom
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pl_background = new System.Windows.Forms.Panel();
             this.dgv_details = new System.Windows.Forms.DataGridView();
             this.pl_spacer = new System.Windows.Forms.Panel();
             this.pl_staffInfo = new System.Windows.Forms.Panel();
+            this.mtb_phone = new System.Windows.Forms.MaskedTextBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.btn_create = new System.Windows.Forms.Button();
             this.btn_update = new System.Windows.Forms.Button();
@@ -46,10 +47,7 @@ namespace Diplom
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.mtb_phone = new System.Windows.Forms.MaskedTextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btn_delete = new System.Windows.Forms.Button();
             this.pl_background.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_details)).BeginInit();
             this.pl_staffInfo.SuspendLayout();
@@ -73,9 +71,9 @@ namespace Diplom
             // 
             this.dgv_details.AllowUserToAddRows = false;
             this.dgv_details.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.dgv_details.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.dgv_details.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgv_details.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgv_details.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgv_details.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -101,9 +99,7 @@ namespace Diplom
             // pl_staffInfo
             // 
             this.pl_staffInfo.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.pl_staffInfo.Controls.Add(this.button2);
-            this.pl_staffInfo.Controls.Add(this.textBox1);
-            this.pl_staffInfo.Controls.Add(this.button1);
+            this.pl_staffInfo.Controls.Add(this.btn_delete);
             this.pl_staffInfo.Controls.Add(this.mtb_phone);
             this.pl_staffInfo.Controls.Add(this.panel4);
             this.pl_staffInfo.Controls.Add(this.lb_phone);
@@ -118,6 +114,15 @@ namespace Diplom
             this.pl_staffInfo.Name = "pl_staffInfo";
             this.pl_staffInfo.Size = new System.Drawing.Size(350, 435);
             this.pl_staffInfo.TabIndex = 4;
+            // 
+            // mtb_phone
+            // 
+            this.mtb_phone.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.mtb_phone.Location = new System.Drawing.Point(37, 263);
+            this.mtb_phone.Mask = "#(###)#######";
+            this.mtb_phone.Name = "mtb_phone";
+            this.mtb_phone.Size = new System.Drawing.Size(271, 28);
+            this.mtb_phone.TabIndex = 9;
             // 
             // panel4
             // 
@@ -239,43 +244,16 @@ namespace Diplom
             this.panel1.Size = new System.Drawing.Size(15, 450);
             this.panel1.TabIndex = 0;
             // 
-            // mtb_phone
+            // btn_delete
             // 
-            this.mtb_phone.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.mtb_phone.Location = new System.Drawing.Point(37, 263);
-            this.mtb_phone.Mask = "#(###)#######";
-            this.mtb_phone.Name = "mtb_phone";
-            this.mtb_phone.Size = new System.Drawing.Size(271, 28);
-            this.mtb_phone.TabIndex = 9;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(303, 311);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(41, 38);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // textBox1
-            // 
-            this.textBox1.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox1.Location = new System.Drawing.Point(37, 315);
-            this.textBox1.MaxLength = 45;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(114, 28);
-            this.textBox1.TabIndex = 11;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(256, 311);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(41, 38);
-            this.button2.TabIndex = 12;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btn_delete.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_delete.Location = new System.Drawing.Point(86, 325);
+            this.btn_delete.Name = "btn_delete";
+            this.btn_delete.Size = new System.Drawing.Size(177, 49);
+            this.btn_delete.TabIndex = 10;
+            this.btn_delete.Text = "Удалить";
+            this.btn_delete.UseVisualStyleBackColor = true;
+            this.btn_delete.Click += new System.EventHandler(this.btn_delete_Click);
             // 
             // Staff
             // 
@@ -314,8 +292,6 @@ namespace Diplom
         private System.Windows.Forms.ComboBox cb_staff;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.MaskedTextBox mtb_phone;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button btn_delete;
     }
 }

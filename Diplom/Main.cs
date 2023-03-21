@@ -43,6 +43,11 @@ namespace Diplom
             lb_currUser.Text = AuthorizedUserInfo.UserName;
             OpenChildForm(new Tickets(), sender);
             
+            //if (AuthorizedUserInfo.UserRole == "Администратор")
+            //{
+            //    pl_menu_operators.Show();
+            //    this.Text += " РЕЖИМ АДМИНИСТРАТОРА";
+            //}
         }
 
         private void Main_FormClosing(object sender, FormClosingEventArgs e)

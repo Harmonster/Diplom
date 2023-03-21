@@ -9,6 +9,7 @@ namespace Diplom
     public class AuthorizedUserInfo
     {
         public static string UserName;
+        public static string UserRole;
         public static int UserId;
     }
 }

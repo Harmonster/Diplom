@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -33,7 +34,7 @@ namespace Diplom
                     DataTable dataTable = new DataTable();
                     MySqlDataAdapter dataAdapter = new MySqlDataAdapter(query, Connection);
                     dataAdapter.SelectCommand.Parameters.AddWithValue("@user", tbp_login.Text);
-                    dataAdapter.SelectCommand.Parameters.AddWithValue("@password", tbp_password.Text);
+                    dataAdapter.SelectCommand.Parameters.AddWithValue("@password", GetHashedPassword(tbp_password.Text));
                     dataAdapter.Fill(dataTable);
 
                     if (tbp_login.Text == "") { MessageBox.Show("Вы не ввели логин. Перепроверьте вводимые данные!"); }
@@ -41,6 +42,7 @@ namespace Diplom
                     else if (dataTable.Rows.Count == 1)
                     {
                         AuthorizedUserInfo.UserName = dataTable.Rows[0]["name_operator"].ToString();
+                        AuthorizedUserInfo.UserRole = dataTable.Rows[0]["role_operator"].ToString();
                         Main mainForm = new Main();
                         this.Hide();
                         mainForm.Show();
@@ -59,11 +61,36 @@ namespace Diplom
         {
             //tbp_login.Text = "dennyharmless@gmail.com";
             //tbp_password.Text = "12345678";
+            //tbp_login.Text = "ivanov@mail.ru";
+            //tbp_password.Text = "1234567";
+            //tbp_login.Text = "petrov@hotmail.com";
+            //tbp_password.Text = "qwerty123";
+            //Clipboard.SetText(GetHashedPassword(tbp_password.Text));
         }
 
         private void Auth_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
+        }
+
+        /// <summary>
+        /// Шифрование пароля
+        /// </summary>
+        /// <param name="password">Пароль</param>
+        /// <returns>Хешированный пароль</returns>
+        private string GetHashedPassword(string password)
+        {
+            using (SHA256 sha256Hash = SHA256.Create())
+            {
+                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(password));
+                StringBuilder builder = new StringBuilder();
+                for (int i = 0; i < bytes.Length; i++)
+                {
+                    builder.Append(bytes[i].ToString("x2"));
+                }
+                //MessageBox.Show(builder.ToString());
+                return builder.ToString();
+            }
         }
     }
 }
