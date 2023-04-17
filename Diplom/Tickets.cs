@@ -9,11 +9,23 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+/* TODO
+ * 1) Удаление записи администратором
+ * 2) Восстановление пароля
+ * 3) Добавить секретное слово для сотрудников
+ * 4) Проверить и пофиксить поля ввода
+ * 5) Настроить отображение таблицы
+ */
+
 namespace Diplom
 {
     public partial class Tickets : Form
     {
         public int currTicketId;
+        int paginationSize = 10;
+        int totalPages;
+        int ticketsCount;
+        int currentPage = 1;
 
         public Tickets()
         {
@@ -22,63 +34,29 @@ namespace Diplom
 
         private void Tickets_Load(object sender, EventArgs e)
         {
-            GetTicketList();
+            FormLoad();
         }
 
-        public void GetTicketList()
+        public void FormLoad()
         {
-            using (MySqlConnection Connection = new MySqlConnection(Properties.Settings.Default.DBConnectionString))
-            {
-                MySqlCommand cmd = new MySqlCommand("GetTicketList", Connection);
-                MySqlDataAdapter da = new MySqlDataAdapter();
-                DataTable dt = new DataTable();
-                try
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    da.SelectCommand = cmd;
-                    da.Fill(dt);
-                    dgv_tickets.DataSource = dt;
-
-                }
-                catch (Exception)
-                {
-                    throw;
-                }
-                finally
-                {
-                    cmd.Dispose();
-                    Connection.Close();
-                }
-            }
+            ticketsCount = Classes.Database.GetTicketsCount();
+            totalPages = (int)Math.Ceiling((double)ticketsCount / paginationSize);
+            TslTotalTickets.Text = ticketsCount.ToString();
+            TslTotalPages.Text = totalPages.ToString();
+            TstbxCurrentPage.Text = currentPage.ToString();
+            Classes.Database.GetTicketList(dgv_tickets, "GetTicketListOffset", paginationSize, (currentPage - 1) * paginationSize);
         }
 
-        private void GetTicketsByPriority(DataGridView dgv, string temp)
+        public void FormLoad(int size, int offset)
         {
-            using (MySqlConnection Connection = new MySqlConnection(Properties.Settings.Default.DBConnectionString))
-            {
-                MySqlCommand cmd = new MySqlCommand("GetTicketsByPriority", Connection);
-                MySqlDataAdapter da = new MySqlDataAdapter();
-                DataTable dt = new DataTable();
-                try
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@priority", temp);
-                    da.SelectCommand = cmd;
-                    da.Fill(dt);
-                    dgv.DataSource = dt;
-
-                }
-                catch (Exception)
-                {
-                    throw;
-                }
-                finally
-                {
-                    cmd.Dispose();
-                    Connection.Close();
-                }
-            }
+            ticketsCount = Classes.Database.GetTicketsCount();
+            totalPages = (int)Math.Ceiling((double)ticketsCount / paginationSize);
+            TslTotalTickets.Text = ticketsCount.ToString();
+            TslTotalPages.Text = totalPages.ToString();
+            TstbxCurrentPage.Text = currentPage.ToString();
+            Classes.Database.GetTicketList(dgv_tickets, "GetTicketListOffset", size, offset);
         }
+
 
         private void cb_searchByPriority_SelectedValueChanged(object sender, EventArgs e)
         {
@@ -87,89 +65,25 @@ namespace Diplom
             switch (currValue)
             {
                 case "Обычные":
-                    GetTicketsByPriority(dgv_tickets, "Обычный");
+                    Classes.Database.GetTicketList(dgv_tickets, "GetTicketsByPriorityOffset", paginationSize, (currentPage - 1) * paginationSize);
                     break;
-                case "Средние":
-                    GetTicketsByPriority(dgv_tickets, "Средний");
-                    break;
-                case "Срочные":
-                    GetTicketsByPriority(dgv_tickets, "Срочный");
-                    break;
-                case "Все":
-                    GetTicketList();
-                    break;
+                
             }
         }
 
         private void tbp_search_TextChanged(object sender, EventArgs e)
         {
-            using (MySqlConnection Connection = new MySqlConnection(Properties.Settings.Default.DBConnectionString))
-            {
-                MySqlCommand cmd = new MySqlCommand("GetTicketsByLike", Connection);
-                MySqlDataAdapter da = new MySqlDataAdapter();
-                DataTable dt = new DataTable();
-
-                if (tbp_search.Text == string.Empty) { GetTicketList(); }
-                else 
-                {
-                    try
-                    {
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("@input", tbp_search.Text);
-                        da.SelectCommand = cmd;
-                        da.Fill(dt);
-                        dgv_tickets.DataSource = dt;
-                    }
-                    catch (Exception)
-                    {
-                        throw;
-                    }
-                    finally
-                    {
-                        cmd.Dispose();
-                        Connection.Close();
-                    }
-                }
-            }
+            Classes.Database.Search(dgv_tickets, "GetTicketsByLike", tbp_search.Text);
         }
 
         private void dtp_date_ValueChanged(object sender, EventArgs e)
         {
-            using (MySqlConnection Connection = new MySqlConnection(Properties.Settings.Default.DBConnectionString))
-            {
-                MySqlCommand cmd = new MySqlCommand("GetTicketsByDate", Connection);
-                MySqlDataAdapter da = new MySqlDataAdapter();
-                DataTable dt = new DataTable();
-                try
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@input", dtp_date.Value);
-                    da.SelectCommand = cmd;
-                    da.Fill(dt);
-                    dgv_tickets.DataSource = dt;
 
-                }
-                catch (Exception)
-                {
-                    throw;
-                }
-                finally
-                {
-                    cmd.Dispose();
-                    Connection.Close();
-                }
-            }
-        }
-
-        private void btn_ticketCreate_Click(object sender, EventArgs e)
-        {
-            CreateTicket f = new CreateTicket(this);
-            f.ShowDialog();
         }
 
         private void dgv_tickets_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            TicketDetails f = new TicketDetails(this);
+            TicketDetails f = new TicketDetails(this, currTicketId, paginationSize, (currentPage - 1) * paginationSize);
             f.ShowDialog();
         }
 
@@ -180,7 +94,64 @@ namespace Diplom
                 DataGridViewRow row = dgv_tickets.Rows[e.RowIndex];
                 currTicketId = (int)row.Cells[0].Value;
             }
+        }
 
+        private void TsbNextPage_Click(object sender, EventArgs e)
+        {
+            if (currentPage < totalPages)
+            {
+                currentPage++;
+                TstbxCurrentPage.Text = currentPage.ToString();
+                Classes.Database.GetTicketList(dgv_tickets, "GetTicketListOffset", paginationSize, (currentPage - 1) * paginationSize);
+            }
+            else if (currentPage == totalPages)
+            {
+                currentPage = 1;
+                TstbxCurrentPage.Text = currentPage.ToString();
+                Classes.Database.GetTicketList(dgv_tickets, "GetTicketListOffset", paginationSize, (currentPage - 1) * paginationSize);
+            }
+        }
+
+        private void TsbLastPage_Click(object sender, EventArgs e)
+        {
+            currentPage = totalPages;
+            TstbxCurrentPage.Text = currentPage.ToString();
+            Classes.Database.GetTicketList(dgv_tickets, "GetTicketListOffset", paginationSize, (currentPage - 1) * paginationSize);
+        }
+
+        private void TsbPreviousPage_Click(object sender, EventArgs e)
+        {
+            if (currentPage > 1)
+            {
+                currentPage--;
+                TstbxCurrentPage.Text = currentPage.ToString();
+                Classes.Database.GetTicketList(dgv_tickets, "GetTicketListOffset", paginationSize, (currentPage - 1) * paginationSize);
+            }
+            else if (currentPage == 1)
+            {
+                currentPage = 1;
+                TstbxCurrentPage.Text = currentPage.ToString();
+                Classes.Database.GetTicketList(dgv_tickets, "GetTicketListOffset", paginationSize, (currentPage - 1) * paginationSize);
+            }
+        }
+
+        private void TsbFirstPage_Click(object sender, EventArgs e)
+        {
+            currentPage = 1;
+            TstbxCurrentPage.Text = currentPage.ToString();
+            Classes.Database.GetTicketList(dgv_tickets, "GetTicketListOffset", paginationSize, (currentPage - 1) * paginationSize);
+        }
+
+        private void TsbTicketCreate_Click(object sender, EventArgs e)
+        {
+            CreateTicket f = new CreateTicket(this, paginationSize, (currentPage - 1) * paginationSize);
+            f.ShowDialog();
+        }
+
+        private void TsbTicketDelete_Click(object sender, EventArgs e)
+        {
+            Classes.Database.DeleteTicketById(currTicketId);
+            FormLoad();
         }
     }
 }

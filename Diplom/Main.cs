@@ -40,7 +40,7 @@ namespace Diplom
 
         private void Main_Load(object sender, EventArgs e)
         {
-            lb_currUser.Text = AuthorizedUserInfo.UserName;
+            lb_currUser.Text = Classes.AuthorizedUserInfo.UserName;
             OpenChildForm(new Tickets(), sender);
             
             //if (AuthorizedUserInfo.UserRole == "Администратор")
@@ -58,30 +58,21 @@ namespace Diplom
         private void btn_tickets_Click(object sender, EventArgs e)
         {
             OpenChildForm(new Tickets(), sender);
-            pl_menu_ticketsHighlight.BackColor = Classes.ColorPalette.hightlightOn;
-            pl_menu_staffHighlight.BackColor = Classes.ColorPalette.hightlightOff;
-            pl_menu_reportHighlight.BackColor = Classes.ColorPalette.hightlightOff;
         }
 
         private void btn_staff_Click(object sender, EventArgs e)
         {
             OpenChildForm(new Staff(), sender);
-            pl_menu_ticketsHighlight.BackColor = Classes.ColorPalette.hightlightOff;
-            pl_menu_staffHighlight.BackColor = Classes.ColorPalette.hightlightOn;
-            pl_menu_reportHighlight.BackColor = Classes.ColorPalette.hightlightOff;
         }
 
         private void btn_reports_Click(object sender, EventArgs e)
         {
             OpenChildForm(new Report(), sender);
-            pl_menu_ticketsHighlight.BackColor = Classes.ColorPalette.hightlightOff;
-            pl_menu_staffHighlight.BackColor = Classes.ColorPalette.hightlightOff;
-            pl_menu_reportHighlight.BackColor = Classes.ColorPalette.hightlightOn;
         }
 
         private void btn_logout_Click(object sender, EventArgs e)
         {
-            AuthorizedUserInfo.UserName = string.Empty;
+            Classes.AuthorizedUserInfo.UserName = string.Empty;
             Auth authForm = new Auth();
             this.Hide();
             authForm.Show();

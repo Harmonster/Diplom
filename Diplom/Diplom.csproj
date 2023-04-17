@@ -177,7 +177,8 @@
     </Compile>
     <Compile Include="Classes\ApplicationSettings.cs" />
     <Compile Include="Classes\AuthorizedUserInfo.cs" />
-    <Compile Include="Classes\ColorPalette.cs" />
+    <Compile Include="Classes\Database.cs" />
+    <Compile Include="Classes\PasswordHash.cs" />
     <Compile Include="Classes\Validations.cs" />
     <Compile Include="CreateTicket.cs">
       <SubType>Form</SubType>
@@ -341,6 +342,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Logos.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\first_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\last_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\next_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\previous_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add_32pxNEW.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\circled_x_32px.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

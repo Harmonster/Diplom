@@ -14,17 +14,21 @@ namespace Diplom
     public partial class TicketDetails : Form
     {
         private Tickets fromForm { get; set; }
+        private int currentPage, offset;
         private int id;
 
-        public TicketDetails(Tickets form)
+        public TicketDetails(Tickets form, int currentTicketId, int page, int query_offset)
         {
             InitializeComponent();
+            id = currentTicketId;
             fromForm = form;
+            currentPage = page;
+            offset = query_offset;
         }
 
         private void btn_close_Click(object sender, EventArgs e)
         {
-            fromForm.GetTicketList();
+            fromForm.FormLoad(currentPage, offset);
             this.Close();
         }
 
@@ -35,13 +39,11 @@ namespace Diplom
 
         private void TicketDetails_Load(object sender, EventArgs e)
         {
-            GetStatusList();
-            GetPriorityList();
-            GetTypeList();
+            Classes.Database.GetTableContent(cb_prio, "GetPriorityList", "ticket_priority", "name_priority", "id_priority");
+            Classes.Database.GetTableContent(cb_status, "GetStatusList", "ticket_status", "name_status", "id_status");
+            Classes.Database.GetTableContent(cb_type, "GetTypeList", "ticket_priority", "name_type", "id_type");
 
-            id = fromForm.currTicketId;
-
-            if (AuthorizedUserInfo.UserRole == "Администратор")
+            if (Classes.AuthorizedUserInfo.UserRole == "Администратор")
             {
                 tb_type.Hide();
                 tb_prio.Hide();
@@ -67,7 +69,7 @@ namespace Diplom
                     tb_date.Text = dt.Rows[0]["Дата создания"].ToString();
                     cb_status.SelectedIndex = cb_status.FindString(dt.Rows[0]["Статус"].ToString());
 
-                    if (AuthorizedUserInfo.UserRole == "Администратор")
+                    if (Classes.AuthorizedUserInfo.UserRole == "Администратор")
                     {
                         cb_type.SelectedIndex = cb_type.FindString(dt.Rows[0]["Тип"].ToString());
                         cb_prio.SelectedIndex = cb_prio.FindString(dt.Rows[0]["Приоритет"].ToString());
@@ -93,90 +95,6 @@ namespace Diplom
             }
         }
 
-        private void GetStatusList()
-        {
-            using (MySqlConnection Connection = new MySqlConnection(Properties.Settings.Default.DBConnectionString))
-            {
-                MySqlCommand cmd = new MySqlCommand("GetStatusList", Connection);
-                MySqlDataAdapter da = new MySqlDataAdapter();
-                DataSet ds = new DataSet();
-                try
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    da.SelectCommand = cmd;
-                    da.Fill(ds, "ticket_status");
-                    cb_status.DataSource = ds.Tables["ticket_status"];
-                    cb_status.DisplayMember = "name_status";
-                    cb_status.ValueMember = "id_status";
-                }
-                catch (Exception)
-                {
-                    throw;
-                }
-                finally
-                {
-                    cmd.Dispose();
-                    Connection.Close();
-                }
-            }
-        }
-
-        private void GetTypeList()
-        {
-            using (MySqlConnection Connection = new MySqlConnection(Properties.Settings.Default.DBConnectionString))
-            {
-                MySqlCommand cmd = new MySqlCommand("GetTypeList", Connection);
-                MySqlDataAdapter da = new MySqlDataAdapter();
-                DataSet ds = new DataSet();
-                try
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    da.SelectCommand = cmd;
-                    da.Fill(ds, "ticket_priority");
-                    cb_type.DataSource = ds.Tables["ticket_priority"];
-                    cb_type.DisplayMember = "name_type";
-                    cb_type.ValueMember = "id_type";
-                }
-                catch (Exception)
-                {
-                    throw;
-                }
-                finally
-                {
-                    cmd.Dispose();
-                    Connection.Close();
-                }
-            }
-        }
-
-        private void GetPriorityList()
-        {
-            using (MySqlConnection Connection = new MySqlConnection(Properties.Settings.Default.DBConnectionString))
-            {
-                MySqlCommand cmd = new MySqlCommand("GetPriorityList", Connection);
-                MySqlDataAdapter da = new MySqlDataAdapter();
-                DataSet ds = new DataSet();
-                try
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    da.SelectCommand = cmd;
-                    da.Fill(ds, "ticket_priority");
-                    cb_prio.DataSource = ds.Tables["ticket_priority"];
-                    cb_prio.DisplayMember = "name_priority";
-                    cb_prio.ValueMember = "id_priority";
-                }
-                catch (Exception)
-                {
-                    throw;
-                }
-                finally
-                {
-                    cmd.Dispose();
-                    Connection.Close();
-                }
-            }
-        }
-
         private void UpdateTicketStatusById()
         {
             using (MySqlConnection Connection = new MySqlConnection(Properties.Settings.Default.DBConnectionString))
@@ -186,9 +104,39 @@ namespace Diplom
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@u_id", id);
-                    cmd.Parameters.AddWithValue("@u_type", cb_type.SelectedValue);
-                    cmd.Parameters.AddWithValue("@u_status", cb_status.SelectedValue);
-                    cmd.Parameters.AddWithValue("@u_priority", cb_prio.SelectedValue);
+                    if ((cb_type.Visible == true) && (cb_prio.Visible == true))
+                    {
+                        cmd.Parameters.AddWithValue("@u_type", cb_type.SelectedValue);
+                        cmd.Parameters.AddWithValue("@u_status", cb_status.SelectedValue);
+                        cmd.Parameters.AddWithValue("@u_priority", cb_prio.SelectedValue);
+                    }
+                    else
+                    {
+                        if (tb_type.Text == "Ошибка")
+                            cmd.Parameters.AddWithValue("@u_type", 1);
+                        else if (tb_type.Text == "Критическая ошибка")
+                            cmd.Parameters.AddWithValue("@u_type", 2);
+                        else if (tb_type.Text == "Пожелание")
+                            cmd.Parameters.AddWithValue("@u_type", 3);
+                        else if (tb_type.Text == "Запрос")
+                            cmd.Parameters.AddWithValue("@u_type", 4);
+                        else if (tb_type.Text == "Отзыв")
+                            cmd.Parameters.AddWithValue("@u_type", 5);
+                        else if (tb_type.Text == "Не указано")
+                            cmd.Parameters.AddWithValue("@u_type", 6);
+
+                        if (tb_prio.Text == "Обычный")
+                            cmd.Parameters.AddWithValue("@u_priority", 1);
+                        else if (tb_prio.Text == "Средний")
+                            cmd.Parameters.AddWithValue("@u_priority", 2);
+                        else if (tb_prio.Text == "Срочный")
+                            cmd.Parameters.AddWithValue("@u_priority", 3);
+                        else if (tb_prio.Text == "Не указано")
+                            cmd.Parameters.AddWithValue("@u_priority", 4);
+
+                        cmd.Parameters.AddWithValue("@u_status", cb_status.SelectedValue);
+                        
+                    }
                     Connection.Open();
                     if (cmd.ExecuteNonQuery() > 0)
                     {

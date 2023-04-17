@@ -10,8 +10,5 @@
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">server=37.77.105.162;user id=Tarabotti;password=gGJ130T90!;persistsecurityinfo=True;database=Diplom</Value>
     </Setting>
-    <Setting Name="ColorTheme" Type="System.String" Scope="Application">
-      <Value Profile="(Default)" />
-    </Setting>
   </Settings>
 </SettingsFile>

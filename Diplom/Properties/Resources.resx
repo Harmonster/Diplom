@@ -145,4 +145,22 @@
   <data name="Logos" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Logos.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="first_32px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\first_32px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="last_32px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\last_32px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="next_32px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\next_32px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="previous_32px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\previous_32px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="add_32pxNEW" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\add_32pxNEW.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="circled_x_32px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\circled_x_32px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

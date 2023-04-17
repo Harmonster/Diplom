@@ -35,22 +35,6 @@ namespace Diplom
             Classes.ApplicationSettings.cfg.Save();
         }
 
-        private void Settings_Load(object sender, EventArgs e)
-        {
-            Classes.ApplicationSettings.LoadSettings();
-            cb_colorTheme.SelectedIndex = Classes.ApplicationSettings.themeColorValue;
-
-            if (Classes.ApplicationSettings.themeColorValue == 0)
-            {
-                pl_background.BackColor = Classes.ColorPalette.wt_background;
-            }
-            else if (Classes.ApplicationSettings.themeColorValue == 1)
-            {
-                pl_background.BackColor = Classes.ColorPalette.dt_background;
-                lb_theme.ForeColor = Classes.ColorPalette.dt_text;
-            }
-        }
-
         private void btn_close_Click(object sender, EventArgs e)
         {
             this.Close();

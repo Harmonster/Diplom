@@ -14,11 +14,14 @@ namespace Diplom
     public partial class CreateTicket : Form
     {
         private Tickets fromForm { get; set; }
+        private int currentPage, offset;
 
-        public CreateTicket(Tickets form)
+        public CreateTicket(Tickets form, int page, int query_offset)
         {
             InitializeComponent();
             fromForm = form;
+            currentPage = page;
+            offset = query_offset;
         }
 
         private void CreateTicket_Load(object sender, EventArgs e)
@@ -144,7 +147,7 @@ namespace Diplom
 
         private void btn_close_Click(object sender, EventArgs e)
         {
-            fromForm.GetTicketList();
+            fromForm.FormLoad(currentPage, offset);
             this.Close();
         }
 

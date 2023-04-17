@@ -33,14 +33,5 @@ namespace Diplom.Properties {
                 return ((string)(this["DBConnectionString"]));
             }
         }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string ColorTheme {
-            get {
-                return ((string)(this["ColorTheme"]));
-            }
-        }
     }
 }

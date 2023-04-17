@@ -152,7 +152,6 @@ namespace Diplom
             this.Name = "Settings";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Настройки";
-            this.Load += new System.EventHandler(this.Settings_Load);
             this.panel1.ResumeLayout(false);
             this.pl_background.ResumeLayout(false);
             this.pl_background.PerformLayout();

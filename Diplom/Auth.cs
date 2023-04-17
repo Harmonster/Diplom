@@ -26,45 +26,39 @@ namespace Diplom
 
         private void btn_login_Click(object sender, EventArgs e)
         {
-            using (MySqlConnection Connection = new MySqlConnection(Properties.Settings.Default.DBConnectionString))
+            if (string.IsNullOrEmpty(tb_login.Text))
             {
-                try
+                MessageBox.Show("Вы не ввели логин. Пожалуйста повторите ввод.", "Ошибка", MessageBoxButtons.OK);
+                return;
+            }
+            else if (string.IsNullOrEmpty(tb_password.Text))
+            {
+                MessageBox.Show("Вы не ввели пароль. Пожалуйста повторите ввод.", "Ошибка", MessageBoxButtons.OK);
+                return;
+            }
+            else
+            {
+                if (Classes.AuthorizedUserInfo.AuthorizationOperator(tb_login, tb_password, "AuthorizationOperator") == true)
                 {
-                    string query = "SELECT * FROM `Diplom`.`operators` WHERE `email_operator` = @user AND `password_operator` = @password";
-                    DataTable dataTable = new DataTable();
-                    MySqlDataAdapter dataAdapter = new MySqlDataAdapter(query, Connection);
-                    dataAdapter.SelectCommand.Parameters.AddWithValue("@user", tbp_login.Text);
-                    dataAdapter.SelectCommand.Parameters.AddWithValue("@password", GetHashedPassword(tbp_password.Text));
-                    dataAdapter.Fill(dataTable);
-
-                    if (tbp_login.Text == "") { MessageBox.Show("Вы не ввели логин. Перепроверьте вводимые данные!"); }
-                    else if (tbp_password.Text == "") { MessageBox.Show("Вы не ввели пароль. Перепроверьте вводимые данные!"); }
-                    else if (dataTable.Rows.Count == 1)
-                    {
-                        AuthorizedUserInfo.UserName = dataTable.Rows[0]["name_operator"].ToString();
-                        AuthorizedUserInfo.UserRole = dataTable.Rows[0]["role_operator"].ToString();
-                        Main mainForm = new Main();
-                        this.Hide();
-                        mainForm.Show();
-                    }
-                    else
-                    { 
-                        MessageBox.Show("Работник с такими данными не найден. Перепроверьте вводимые данные!", "Ошибка", MessageBoxButtons.OKCancel, MessageBoxIcon.Error); 
-                        return; 
-                    }
+                    Main form = new Main();
+                    this.Hide();
+                    form.Show();
                 }
-                catch (Exception ex) { MessageBox.Show(ex.ToString(), "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error); };
+                else
+                {
+                    MessageBox.Show("Запись с такими данными не найдена. Перепроверьте вводимые данные.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
         private void Auth_Load(object sender, EventArgs e)
         {
-            //tbp_login.Text = "dennyharmless@gmail.com";
-            //tbp_password.Text = "12345678";
-            //tbp_login.Text = "ivanov@mail.ru";
-            //tbp_password.Text = "1234567";
-            //tbp_login.Text = "petrov@hotmail.com";
-            //tbp_password.Text = "qwerty123";
+            //tb_login.Text = "dennyharmless@gmail.com";
+            //tb_password.Text = "12345678";
+            //tb_login.Text = "ivanov@mail.ru";
+            //tb_password.Text = "1234567";
+            tb_login.Text = "petrov@hotmail.com";
+            tb_password.Text = "qwerty123";
             //Clipboard.SetText(GetHashedPassword(tbp_password.Text));
         }
 
@@ -73,23 +67,15 @@ namespace Diplom
             Application.Exit();
         }
 
-        /// <summary>
-        /// Шифрование пароля
-        /// </summary>
-        /// <param name="password">Пароль</param>
-        /// <returns>Хешированный пароль</returns>
-        private string GetHashedPassword(string password)
+        private void tb_login_Validating(object sender, CancelEventArgs e)
         {
-            using (SHA256 sha256Hash = SHA256.Create())
+            if (Classes.Validations.ValidateEmail(tb_login.Text) == false)
             {
-                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(password));
-                StringBuilder builder = new StringBuilder();
-                for (int i = 0; i < bytes.Length; i++)
-                {
-                    builder.Append(bytes[i].ToString("x2"));
-                }
-                //MessageBox.Show(builder.ToString());
-                return builder.ToString();
+                btn_login.Enabled = false;
+            }
+            else
+            {
+                btn_login.Enabled = true;
             }
         }
     }

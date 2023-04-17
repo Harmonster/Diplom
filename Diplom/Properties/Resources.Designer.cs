@@ -73,6 +73,46 @@ namespace Diplom.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap add_32pxNEW {
+            get {
+                object obj = ResourceManager.GetObject("add_32pxNEW", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap circled_x_32px {
+            get {
+                object obj = ResourceManager.GetObject("circled_x_32px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap first_32px {
+            get {
+                object obj = ResourceManager.GetObject("first_32px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap last_32px {
+            get {
+                object obj = ResourceManager.GetObject("last_32px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Logos {
             get {
                 object obj = ResourceManager.GetObject("Logos", resourceCulture);
@@ -96,6 +136,26 @@ namespace Diplom.Properties {
         internal static System.Drawing.Bitmap menu_32px_dark {
             get {
                 object obj = ResourceManager.GetObject("menu_32px_dark", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap next_32px {
+            get {
+                object obj = ResourceManager.GetObject("next_32px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap previous_32px {
+            get {
+                object obj = ResourceManager.GetObject("previous_32px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

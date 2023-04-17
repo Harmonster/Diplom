@@ -22,7 +22,7 @@ namespace Diplom
         {
             GetStaffList();
 
-            if (AuthorizedUserInfo.UserRole != "Администратор")
+            if (Classes.AuthorizedUserInfo.UserRole != "Администратор")
             {
                 btn_delete.Hide();
             }
