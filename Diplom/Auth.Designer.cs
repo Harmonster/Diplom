@@ -30,6 +30,10 @@ namespace Diplom
         private void InitializeComponent()
         {
             this.pl_header = new System.Windows.Forms.Panel();
+            this.LblRestore = new System.Windows.Forms.LinkLabel();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.tb_password = new System.Windows.Forms.TextBox();
             this.tb_login = new System.Windows.Forms.TextBox();
             this.pb_logo = new System.Windows.Forms.PictureBox();
@@ -47,6 +51,10 @@ namespace Diplom
             // pl_header
             // 
             this.pl_header.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.pl_header.Controls.Add(this.LblRestore);
+            this.pl_header.Controls.Add(this.checkBox1);
+            this.pl_header.Controls.Add(this.label2);
+            this.pl_header.Controls.Add(this.label1);
             this.pl_header.Controls.Add(this.tb_password);
             this.pl_header.Controls.Add(this.tb_login);
             this.pl_header.Controls.Add(this.pb_logo);
@@ -56,21 +64,68 @@ namespace Diplom
             this.pl_header.Location = new System.Drawing.Point(0, 0);
             this.pl_header.Margin = new System.Windows.Forms.Padding(2);
             this.pl_header.Name = "pl_header";
-            this.pl_header.Size = new System.Drawing.Size(216, 287);
+            this.pl_header.Size = new System.Drawing.Size(216, 358);
             this.pl_header.TabIndex = 1;
+            // 
+            // LblRestore
+            // 
+            this.LblRestore.AutoSize = true;
+            this.LblRestore.Location = new System.Drawing.Point(65, 265);
+            this.LblRestore.Name = "LblRestore";
+            this.LblRestore.Size = new System.Drawing.Size(91, 13);
+            this.LblRestore.TabIndex = 13;
+            this.LblRestore.TabStop = true;
+            this.LblRestore.Text = "Забыли пароль?";
+            this.LblRestore.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LblRestore_LinkClicked);
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(32, 290);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(114, 17);
+            this.checkBox1.TabIndex = 12;
+            this.checkBox1.Text = "Показать пароль";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.Location = new System.Drawing.Point(29, 219);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(57, 16);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "Пароль";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(26, 172);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(47, 16);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "Логин";
             // 
             // tb_password
             // 
-            this.tb_password.Location = new System.Drawing.Point(29, 212);
+            this.tb_password.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tb_password.Location = new System.Drawing.Point(29, 236);
             this.tb_password.Name = "tb_password";
-            this.tb_password.Size = new System.Drawing.Size(159, 20);
+            this.tb_password.Size = new System.Drawing.Size(159, 26);
             this.tb_password.TabIndex = 10;
+            this.tb_password.UseSystemPasswordChar = true;
             // 
             // tb_login
             // 
-            this.tb_login.Location = new System.Drawing.Point(29, 186);
+            this.tb_login.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tb_login.Location = new System.Drawing.Point(29, 188);
             this.tb_login.Name = "tb_login";
-            this.tb_login.Size = new System.Drawing.Size(159, 20);
+            this.tb_login.Size = new System.Drawing.Size(159, 26);
             this.tb_login.TabIndex = 9;
             this.tb_login.Validating += new System.ComponentModel.CancelEventHandler(this.tb_login_Validating);
             // 
@@ -114,7 +169,7 @@ namespace Diplom
             this.pl_footer.Controls.Add(this.btn_exit);
             this.pl_footer.Controls.Add(this.btn_login);
             this.pl_footer.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pl_footer.Location = new System.Drawing.Point(0, 256);
+            this.pl_footer.Location = new System.Drawing.Point(0, 327);
             this.pl_footer.Margin = new System.Windows.Forms.Padding(2);
             this.pl_footer.Name = "pl_footer";
             this.pl_footer.Size = new System.Drawing.Size(216, 31);
@@ -150,7 +205,7 @@ namespace Diplom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(216, 287);
+            this.ClientSize = new System.Drawing.Size(216, 358);
             this.Controls.Add(this.pl_header);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -178,5 +233,9 @@ namespace Diplom
         private System.Windows.Forms.PictureBox pb_logo;
         private System.Windows.Forms.TextBox tb_password;
         private System.Windows.Forms.TextBox tb_login;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.LinkLabel LblRestore;
     }
 }

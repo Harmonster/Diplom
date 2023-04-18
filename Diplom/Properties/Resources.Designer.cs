@@ -173,6 +173,16 @@ namespace Diplom.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap reset_25px {
+            get {
+                object obj = ResourceManager.GetObject("reset_25px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap settings_32px_dark {
             get {
                 object obj = ResourceManager.GetObject("settings_32px_dark", resourceCulture);

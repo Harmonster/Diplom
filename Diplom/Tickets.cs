@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 /* TODO
- * 1) Удаление записи администратором
- * 2) Восстановление пароля
- * 3) Добавить секретное слово для сотрудников
+ * 1) Удаление записи администратором -готово
+ * 2) Восстановление пароля -готово
+ * 3) Добавить секретное слово для сотрудников -готово
  * 4) Проверить и пофиксить поля ввода
- * 5) Настроить отображение таблицы
+ * 5) Настроить отображение таблицы -готово
  */
 
 namespace Diplom
@@ -35,6 +35,12 @@ namespace Diplom
         private void Tickets_Load(object sender, EventArgs e)
         {
             FormLoad();
+
+            if (Classes.AuthorizedUserInfo.UserRole != "Администратор")
+            {
+                TsbTicketDelete.Visible = false;
+                toolStripSeparator5.Visible = false;
+            }
         }
 
         public void FormLoad()
@@ -43,8 +49,10 @@ namespace Diplom
             totalPages = (int)Math.Ceiling((double)ticketsCount / paginationSize);
             TslTotalTickets.Text = ticketsCount.ToString();
             TslTotalPages.Text = totalPages.ToString();
-            TstbxCurrentPage.Text = currentPage.ToString();
+            TslCurrentPage.Text = "Страница " + currentPage.ToString() + " из";
             Classes.Database.GetTicketList(dgv_tickets, "GetTicketListOffset", paginationSize, (currentPage - 1) * paginationSize);
+            UpdatePaginationButtons(currentPage);
+            DatagridviewSettings();
         }
 
         public void FormLoad(int size, int offset)
@@ -53,32 +61,45 @@ namespace Diplom
             totalPages = (int)Math.Ceiling((double)ticketsCount / paginationSize);
             TslTotalTickets.Text = ticketsCount.ToString();
             TslTotalPages.Text = totalPages.ToString();
-            TstbxCurrentPage.Text = currentPage.ToString();
+            TslCurrentPage.Text = "Страница " + currentPage.ToString() + " из";
             Classes.Database.GetTicketList(dgv_tickets, "GetTicketListOffset", size, offset);
+            UpdatePaginationButtons(currentPage);
+            DatagridviewSettings();
         }
 
 
         private void cb_searchByPriority_SelectedValueChanged(object sender, EventArgs e)
         {
             string currValue = (string)cb_searchByPriority.SelectedItem;
-
             switch (currValue)
             {
                 case "Обычные":
-                    Classes.Database.GetTicketList(dgv_tickets, "GetTicketsByPriorityOffset", paginationSize, (currentPage - 1) * paginationSize);
+                    Classes.Database.GetTicketList(dgv_tickets, "GetTicketsByPriority", "Обычный");
                     break;
-                
+                case "Средние":
+                    Classes.Database.GetTicketList(dgv_tickets, "GetTicketsByPriority", "Средний");
+                    break;
+                case "Срочные":
+                    Classes.Database.GetTicketList(dgv_tickets, "GetTicketsByPriority", "Срочный");
+                    break;
+                case "Без приоритета":
+                    Classes.Database.GetTicketList(dgv_tickets, "GetTicketsByPriority", "Не указано");
+                    break;
+                case "Все":
+                    Classes.Database.GetTicketList(dgv_tickets, "GetTicketListOffset", paginationSize, (currentPage - 1) * paginationSize);
+                    break;
             }
         }
 
         private void tbp_search_TextChanged(object sender, EventArgs e)
         {
             Classes.Database.Search(dgv_tickets, "GetTicketsByLike", tbp_search.Text);
+            DatagridviewSettings();
         }
 
         private void dtp_date_ValueChanged(object sender, EventArgs e)
         {
-
+            Classes.Database.SearchDate(dgv_tickets, dtp_date);
         }
 
         private void dgv_tickets_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -101,22 +122,28 @@ namespace Diplom
             if (currentPage < totalPages)
             {
                 currentPage++;
-                TstbxCurrentPage.Text = currentPage.ToString();
+                TslCurrentPage.Text = "Страница " + currentPage.ToString() + " из";
                 Classes.Database.GetTicketList(dgv_tickets, "GetTicketListOffset", paginationSize, (currentPage - 1) * paginationSize);
             }
             else if (currentPage == totalPages)
             {
                 currentPage = 1;
-                TstbxCurrentPage.Text = currentPage.ToString();
+                TslCurrentPage.Text = "Страница " + currentPage.ToString() + " из";
                 Classes.Database.GetTicketList(dgv_tickets, "GetTicketListOffset", paginationSize, (currentPage - 1) * paginationSize);
             }
+
+            DatagridviewSettings();
+            UpdatePaginationButtons(currentPage);
         }
 
         private void TsbLastPage_Click(object sender, EventArgs e)
         {
             currentPage = totalPages;
-            TstbxCurrentPage.Text = currentPage.ToString();
+            TslCurrentPage.Text = "Страница " + currentPage.ToString() + " из";
             Classes.Database.GetTicketList(dgv_tickets, "GetTicketListOffset", paginationSize, (currentPage - 1) * paginationSize);
+
+            DatagridviewSettings();
+            UpdatePaginationButtons(currentPage);
         }
 
         private void TsbPreviousPage_Click(object sender, EventArgs e)
@@ -124,22 +151,27 @@ namespace Diplom
             if (currentPage > 1)
             {
                 currentPage--;
-                TstbxCurrentPage.Text = currentPage.ToString();
+                TslCurrentPage.Text = "Страница " + currentPage.ToString() + " из";
                 Classes.Database.GetTicketList(dgv_tickets, "GetTicketListOffset", paginationSize, (currentPage - 1) * paginationSize);
             }
             else if (currentPage == 1)
             {
                 currentPage = 1;
-                TstbxCurrentPage.Text = currentPage.ToString();
+                TslCurrentPage.Text = "Страница " + currentPage.ToString() + " из";
                 Classes.Database.GetTicketList(dgv_tickets, "GetTicketListOffset", paginationSize, (currentPage - 1) * paginationSize);
             }
+
+            DatagridviewSettings();
+            UpdatePaginationButtons(currentPage);
         }
 
         private void TsbFirstPage_Click(object sender, EventArgs e)
         {
             currentPage = 1;
-            TstbxCurrentPage.Text = currentPage.ToString();
+            TslCurrentPage.Text = "Страница " + currentPage.ToString() + " из";
             Classes.Database.GetTicketList(dgv_tickets, "GetTicketListOffset", paginationSize, (currentPage - 1) * paginationSize);
+            DatagridviewSettings();
+            UpdatePaginationButtons(currentPage);
         }
 
         private void TsbTicketCreate_Click(object sender, EventArgs e)
@@ -153,5 +185,48 @@ namespace Diplom
             Classes.Database.DeleteTicketById(currTicketId);
             FormLoad();
         }
+
+        private void BtnSearchReset_Click(object sender, EventArgs e)
+        {
+            FormLoad(paginationSize, (currentPage - 1) * paginationSize);
+        }
+
+        private void UpdatePaginationButtons(int currentPage)
+        {
+            if (currentPage == 1) 
+            {
+                TsbFirstPage.Enabled = false;
+                TsbPreviousPage.Enabled = false;
+                TsbNextPage.Enabled = true;
+                TsbLastPage.Enabled = true;
+            }
+            else if (currentPage == totalPages)
+            {
+                TsbFirstPage.Enabled = true;
+                TsbPreviousPage.Enabled = true;
+                TsbNextPage.Enabled = false;
+                TsbLastPage.Enabled = false;
+            }
+            else if ((currentPage != 1) && (currentPage != totalPages))
+            {
+                TsbFirstPage.Enabled = true;
+                TsbPreviousPage.Enabled = true;
+                TsbNextPage.Enabled = true;
+                TsbLastPage.Enabled = true;
+            }
+        }
+
+        private void DatagridviewSettings()
+        {
+            dgv_tickets.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dgv_tickets.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dgv_tickets.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dgv_tickets.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dgv_tickets.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dgv_tickets.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dgv_tickets.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+        }
     }
 }
+
+

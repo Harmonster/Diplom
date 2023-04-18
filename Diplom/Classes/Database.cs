@@ -76,6 +76,33 @@ namespace Diplom.Classes
                 }
             }
         }
+
+        public static void GetTicketList(DataGridView dgv, string storedProcedureName, string filter)
+        {
+            using (MySqlConnection Connection = new MySqlConnection(Properties.Settings.Default.DBConnectionString))
+            {
+                MySqlCommand cmd = new MySqlCommand(storedProcedureName, Connection);
+                MySqlDataAdapter da = new MySqlDataAdapter();
+                DataTable dt = new DataTable();
+                try
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@priority", filter);
+                    da.SelectCommand = cmd;
+                    da.Fill(dt);
+                    dgv.DataSource = dt;
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+                finally
+                {
+                    cmd.Dispose();
+                    Connection.Close();
+                }
+            }
+        }
         /// <summary>
         /// Запрос количества записей в БД
         /// </summary>
@@ -174,7 +201,7 @@ namespace Diplom.Classes
             }
         }
 
-        public static void SearchDate(DataGridView dgv)
+        public static void SearchDate(DataGridView dgv, DateTimePicker dtp)
         {
             using (MySqlConnection Connection = new MySqlConnection(Properties.Settings.Default.DBConnectionString))
             {
@@ -184,10 +211,10 @@ namespace Diplom.Classes
                 try
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@input", dtp_date.Value);
+                    cmd.Parameters.AddWithValue("@input", dtp.Value);
                     da.SelectCommand = cmd;
                     da.Fill(dt);
-                    dgv_tickets.DataSource = dt;
+                    dgv.DataSource = dt;
 
                 }
                 catch (Exception)
@@ -224,6 +251,40 @@ namespace Diplom.Classes
                 {
                     cmd.Dispose();
                     Connection.Close();
+                }
+            }
+        }
+
+        public static (string, int) GetSecretWordByLogin(string login)
+        {
+            string secret = null;
+            int id = 0;
+            using (MySqlConnection Connection = new MySqlConnection(Properties.Settings.Default.DBConnectionString))
+            {
+                MySqlCommand cmd = new MySqlCommand("GetSecretStaffByLogin", Connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@input", login);
+                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                DataSet ds = new DataSet();
+                try
+                {
+                    Connection.Open();
+                    da.Fill(ds);
+                    if (ds.Tables[0].Rows.Count > 0)
+                    {
+                        secret = ds.Tables[0].Rows[0].Field<string>("secret");
+                        id = ds.Tables[0].Rows[0].Field<int>("id_operator");
+                    }
+                    return (secret, id);
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+                finally
+                {
+                    Connection.Close();
+                    cmd.Dispose();
                 }
             }
         }

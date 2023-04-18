@@ -21,37 +21,9 @@ namespace Diplom
         {
             InitializeComponent();
         }
-        
-        private void btn_reportByStatus_Click(object sender, EventArgs e)
-        {
-            using (MySqlConnection Connection = new MySqlConnection(Properties.Settings.Default.DBConnectionString))
-            {
-                MySqlCommand cmd = new MySqlCommand("GetCompletedTickets", Connection);
-                MySqlDataAdapter da = new MySqlDataAdapter();
-                DataTable dt = new DataTable();
-                try
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    da.SelectCommand = cmd;
-                    da.Fill(dt);
-                    dgv_report.DataSource = dt;
-
-                }
-                catch (Exception)
-                {
-                    throw;
-                }
-                finally
-                {
-                    cmd.Dispose();
-                    Connection.Close();
-                }
-            }
-        }
 
         private void btn_export_Click(object sender, EventArgs e)
         {
-            
             ExportToExcel(dgv_report);
         }
 
@@ -148,6 +120,23 @@ namespace Diplom
         private void Report_Load(object sender, EventArgs e)
         {
             rb_mode_excel.Checked = true;
+        }
+
+        private void comboBox1_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            string currValue = (string)comboBox1.SelectedItem;
+            switch (currValue)
+            {
+                case "Выполненные запросы":
+                    Classes.Database.GetTicketList(dgv_report, "GetCompletedTickets");
+                    break;
+                case "Незакрытые срочные запросы":
+                    Classes.Database.GetTicketList(dgv_report, "GetTicketsListFinishedHighPriority");
+                    break;
+                case "Запросы на доработке":
+                    Classes.Database.GetTicketList(dgv_report, "GetTicketsListUnfinished");
+                    break;
+            }
         }
     }
 }

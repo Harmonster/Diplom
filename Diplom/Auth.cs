@@ -78,5 +78,23 @@ namespace Diplom
                 btn_login.Enabled = true;
             }
         }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.CheckState == CheckState.Checked)
+            {
+                tb_password.UseSystemPasswordChar = false;
+            }
+            else if (checkBox1.CheckState == CheckState.Unchecked)
+                {
+                    tb_password.UseSystemPasswordChar = true;
+                }
+        }
+
+        private void LblRestore_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            RestorePassword form = new RestorePassword();
+            form.Show();
+        }
     }
 }

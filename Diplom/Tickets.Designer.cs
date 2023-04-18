@@ -37,6 +37,7 @@ namespace Diplom
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.BtnSearchReset = new System.Windows.Forms.Button();
             this.dtp_date = new System.Windows.Forms.DateTimePicker();
             this.tbp_search = new Diplom.Custom_Elements.TextBoxWithPlaceholder();
             this.cb_searchByPriority = new System.Windows.Forms.ComboBox();
@@ -44,6 +45,7 @@ namespace Diplom
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.TsbFirstPage = new System.Windows.Forms.ToolStripButton();
             this.TsbPreviousPage = new System.Windows.Forms.ToolStripButton();
+            this.TslCurrentPage = new System.Windows.Forms.ToolStripLabel();
             this.TslTotalPages = new System.Windows.Forms.ToolStripLabel();
             this.TsbNextPage = new System.Windows.Forms.ToolStripButton();
             this.TsbLastPage = new System.Windows.Forms.ToolStripButton();
@@ -54,7 +56,6 @@ namespace Diplom
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.TsbTicketDelete = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
-            this.TstbxCurrentPage = new System.Windows.Forms.ToolStripTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_tickets)).BeginInit();
             this.panel3.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -128,6 +129,7 @@ namespace Diplom
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.BtnSearchReset);
             this.panel3.Controls.Add(this.dtp_date);
             this.panel3.Controls.Add(this.tbp_search);
             this.panel3.Controls.Add(this.cb_searchByPriority);
@@ -138,16 +140,29 @@ namespace Diplom
             this.panel3.Size = new System.Drawing.Size(748, 32);
             this.panel3.TabIndex = 3;
             // 
+            // BtnSearchReset
+            // 
+            this.BtnSearchReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnSearchReset.FlatAppearance.BorderSize = 0;
+            this.BtnSearchReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnSearchReset.Image = global::Diplom.Properties.Resources.reset_25px;
+            this.BtnSearchReset.Location = new System.Drawing.Point(614, 3);
+            this.BtnSearchReset.Name = "BtnSearchReset";
+            this.BtnSearchReset.Size = new System.Drawing.Size(25, 25);
+            this.BtnSearchReset.TabIndex = 5;
+            this.BtnSearchReset.UseVisualStyleBackColor = true;
+            this.BtnSearchReset.Click += new System.EventHandler(this.BtnSearchReset_Click);
+            // 
             // dtp_date
             // 
             this.dtp_date.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dtp_date.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.dtp_date.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.dtp_date.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtp_date.Location = new System.Drawing.Point(646, 5);
+            this.dtp_date.Location = new System.Drawing.Point(644, 3);
             this.dtp_date.Margin = new System.Windows.Forms.Padding(2);
             this.dtp_date.Name = "dtp_date";
-            this.dtp_date.Size = new System.Drawing.Size(98, 24);
+            this.dtp_date.Size = new System.Drawing.Size(100, 24);
             this.dtp_date.TabIndex = 4;
             this.dtp_date.Value = new System.DateTime(2023, 4, 17, 0, 0, 0, 0);
             this.dtp_date.ValueChanged += new System.EventHandler(this.dtp_date_ValueChanged);
@@ -155,7 +170,7 @@ namespace Diplom
             // tbp_search
             // 
             this.tbp_search.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tbp_search.Location = new System.Drawing.Point(165, 2);
+            this.tbp_search.Location = new System.Drawing.Point(165, 3);
             this.tbp_search.Margin = new System.Windows.Forms.Padding(2);
             this.tbp_search.Name = "tbp_search";
             this.tbp_search.PlaceholderColor = System.Drawing.Color.Gray;
@@ -173,6 +188,7 @@ namespace Diplom
             "Обычные",
             "Средние",
             "Срочные",
+            "Без приоритета",
             "Все"});
             this.cb_searchByPriority.Location = new System.Drawing.Point(2, 2);
             this.cb_searchByPriority.Margin = new System.Windows.Forms.Padding(2);
@@ -189,7 +205,7 @@ namespace Diplom
             this.toolStripSeparator1,
             this.TsbFirstPage,
             this.TsbPreviousPage,
-            this.TstbxCurrentPage,
+            this.TslCurrentPage,
             this.TslTotalPages,
             this.TsbNextPage,
             this.TsbLastPage,
@@ -234,6 +250,13 @@ namespace Diplom
             this.TsbPreviousPage.Text = "toolStripButton2";
             this.TsbPreviousPage.ToolTipText = "Предыдущая страница";
             this.TsbPreviousPage.Click += new System.EventHandler(this.TsbPreviousPage_Click);
+            // 
+            // TslCurrentPage
+            // 
+            this.TslCurrentPage.Name = "TslCurrentPage";
+            this.TslCurrentPage.Size = new System.Drawing.Size(14, 36);
+            this.TslCurrentPage.Text = "#";
+            this.TslCurrentPage.ToolTipText = "Текущая страница";
             // 
             // TslTotalPages
             // 
@@ -320,16 +343,6 @@ namespace Diplom
             this.toolStripSeparator5.Name = "toolStripSeparator5";
             this.toolStripSeparator5.Size = new System.Drawing.Size(6, 39);
             // 
-            // TstbxCurrentPage
-            // 
-            this.TstbxCurrentPage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TstbxCurrentPage.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.TstbxCurrentPage.Name = "TstbxCurrentPage";
-            this.TstbxCurrentPage.Size = new System.Drawing.Size(25, 39);
-            this.TstbxCurrentPage.Text = "#";
-            this.TstbxCurrentPage.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.TstbxCurrentPage.ToolTipText = "Текущая страница";
-            // 
             // Tickets
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -377,6 +390,7 @@ namespace Diplom
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripButton TsbTicketDelete;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
-        private System.Windows.Forms.ToolStripTextBox TstbxCurrentPage;
+        private System.Windows.Forms.Button BtnSearchReset;
+        private System.Windows.Forms.ToolStripLabel TslCurrentPage;
     }
 }

@@ -203,6 +203,12 @@
     <Compile Include="Report.Designer.cs">
       <DependentUpon>Report.cs</DependentUpon>
     </Compile>
+    <Compile Include="RestorePassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RestorePassword.Designer.cs">
+      <DependentUpon>RestorePassword.cs</DependentUpon>
+    </Compile>
     <Compile Include="Settings.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -243,6 +249,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Report.resx">
       <DependentUpon>Report.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RestorePassword.resx">
+      <DependentUpon>RestorePassword.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Settings.resx">
       <DependentUpon>Settings.cs</DependentUpon>
@@ -360,6 +369,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\circled_x_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\reset_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\reset_28px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\reset_25px.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
