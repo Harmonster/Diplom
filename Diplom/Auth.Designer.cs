@@ -29,43 +29,43 @@ namespace Diplom
         /// </summary>
         private void InitializeComponent()
         {
-            this.pl_header = new System.Windows.Forms.Panel();
+            this.PnlHeader = new System.Windows.Forms.Panel();
             this.LblRestore = new System.Windows.Forms.LinkLabel();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.tb_password = new System.Windows.Forms.TextBox();
-            this.tb_login = new System.Windows.Forms.TextBox();
-            this.pb_logo = new System.Windows.Forms.PictureBox();
-            this.pl_workplace = new System.Windows.Forms.Panel();
-            this.lb_title = new System.Windows.Forms.Label();
-            this.pl_footer = new System.Windows.Forms.Panel();
-            this.btn_exit = new System.Windows.Forms.Button();
-            this.btn_login = new System.Windows.Forms.Button();
-            this.pl_header.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pb_logo)).BeginInit();
-            this.pl_workplace.SuspendLayout();
-            this.pl_footer.SuspendLayout();
+            this.CbPasswordShow = new System.Windows.Forms.CheckBox();
+            this.LblPassword = new System.Windows.Forms.Label();
+            this.LblLogin = new System.Windows.Forms.Label();
+            this.TxtPassword = new System.Windows.Forms.TextBox();
+            this.TxtLogin = new System.Windows.Forms.TextBox();
+            this.PbLogo = new System.Windows.Forms.PictureBox();
+            this.PnlMain = new System.Windows.Forms.Panel();
+            this.LblTitle = new System.Windows.Forms.Label();
+            this.PnlFooter = new System.Windows.Forms.Panel();
+            this.BtnExit = new System.Windows.Forms.Button();
+            this.BtnLogin = new System.Windows.Forms.Button();
+            this.PnlHeader.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PbLogo)).BeginInit();
+            this.PnlMain.SuspendLayout();
+            this.PnlFooter.SuspendLayout();
             this.SuspendLayout();
             // 
-            // pl_header
+            // PnlHeader
             // 
-            this.pl_header.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.pl_header.Controls.Add(this.LblRestore);
-            this.pl_header.Controls.Add(this.checkBox1);
-            this.pl_header.Controls.Add(this.label2);
-            this.pl_header.Controls.Add(this.label1);
-            this.pl_header.Controls.Add(this.tb_password);
-            this.pl_header.Controls.Add(this.tb_login);
-            this.pl_header.Controls.Add(this.pb_logo);
-            this.pl_header.Controls.Add(this.pl_workplace);
-            this.pl_header.Controls.Add(this.pl_footer);
-            this.pl_header.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pl_header.Location = new System.Drawing.Point(0, 0);
-            this.pl_header.Margin = new System.Windows.Forms.Padding(2);
-            this.pl_header.Name = "pl_header";
-            this.pl_header.Size = new System.Drawing.Size(216, 358);
-            this.pl_header.TabIndex = 1;
+            this.PnlHeader.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.PnlHeader.Controls.Add(this.LblRestore);
+            this.PnlHeader.Controls.Add(this.CbPasswordShow);
+            this.PnlHeader.Controls.Add(this.LblPassword);
+            this.PnlHeader.Controls.Add(this.LblLogin);
+            this.PnlHeader.Controls.Add(this.TxtPassword);
+            this.PnlHeader.Controls.Add(this.TxtLogin);
+            this.PnlHeader.Controls.Add(this.PbLogo);
+            this.PnlHeader.Controls.Add(this.PnlMain);
+            this.PnlHeader.Controls.Add(this.PnlFooter);
+            this.PnlHeader.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PnlHeader.Location = new System.Drawing.Point(0, 0);
+            this.PnlHeader.Margin = new System.Windows.Forms.Padding(2);
+            this.PnlHeader.Name = "PnlHeader";
+            this.PnlHeader.Size = new System.Drawing.Size(216, 358);
+            this.PnlHeader.TabIndex = 1;
             // 
             // LblRestore
             // 
@@ -78,164 +78,164 @@ namespace Diplom
             this.LblRestore.Text = "Забыли пароль?";
             this.LblRestore.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LblRestore_LinkClicked);
             // 
-            // checkBox1
+            // CbPasswordShow
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(32, 290);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(114, 17);
-            this.checkBox1.TabIndex = 12;
-            this.checkBox1.Text = "Показать пароль";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.CbPasswordShow.AutoSize = true;
+            this.CbPasswordShow.Location = new System.Drawing.Point(32, 290);
+            this.CbPasswordShow.Name = "CbPasswordShow";
+            this.CbPasswordShow.Size = new System.Drawing.Size(114, 17);
+            this.CbPasswordShow.TabIndex = 12;
+            this.CbPasswordShow.Text = "Показать пароль";
+            this.CbPasswordShow.UseVisualStyleBackColor = true;
+            this.CbPasswordShow.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
-            // label2
+            // LblPassword
             // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(29, 219);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(57, 16);
-            this.label2.TabIndex = 11;
-            this.label2.Text = "Пароль";
+            this.LblPassword.AutoSize = true;
+            this.LblPassword.BackColor = System.Drawing.Color.Transparent;
+            this.LblPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LblPassword.Location = new System.Drawing.Point(29, 219);
+            this.LblPassword.Name = "LblPassword";
+            this.LblPassword.Size = new System.Drawing.Size(57, 16);
+            this.LblPassword.TabIndex = 11;
+            this.LblPassword.Text = "Пароль";
             // 
-            // label1
+            // LblLogin
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(26, 172);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(47, 16);
-            this.label1.TabIndex = 11;
-            this.label1.Text = "Логин";
+            this.LblLogin.AutoSize = true;
+            this.LblLogin.BackColor = System.Drawing.Color.Transparent;
+            this.LblLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LblLogin.Location = new System.Drawing.Point(26, 172);
+            this.LblLogin.Name = "LblLogin";
+            this.LblLogin.Size = new System.Drawing.Size(47, 16);
+            this.LblLogin.TabIndex = 11;
+            this.LblLogin.Text = "Логин";
             // 
-            // tb_password
+            // TxtPassword
             // 
-            this.tb_password.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tb_password.Location = new System.Drawing.Point(29, 236);
-            this.tb_password.Name = "tb_password";
-            this.tb_password.Size = new System.Drawing.Size(159, 26);
-            this.tb_password.TabIndex = 10;
-            this.tb_password.UseSystemPasswordChar = true;
+            this.TxtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TxtPassword.Location = new System.Drawing.Point(29, 236);
+            this.TxtPassword.Name = "TxtPassword";
+            this.TxtPassword.Size = new System.Drawing.Size(159, 26);
+            this.TxtPassword.TabIndex = 10;
+            this.TxtPassword.UseSystemPasswordChar = true;
             // 
-            // tb_login
+            // TxtLogin
             // 
-            this.tb_login.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tb_login.Location = new System.Drawing.Point(29, 188);
-            this.tb_login.Name = "tb_login";
-            this.tb_login.Size = new System.Drawing.Size(159, 26);
-            this.tb_login.TabIndex = 9;
-            this.tb_login.Validating += new System.ComponentModel.CancelEventHandler(this.tb_login_Validating);
+            this.TxtLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TxtLogin.Location = new System.Drawing.Point(29, 188);
+            this.TxtLogin.Name = "TxtLogin";
+            this.TxtLogin.Size = new System.Drawing.Size(159, 26);
+            this.TxtLogin.TabIndex = 9;
+            this.TxtLogin.Validating += new System.ComponentModel.CancelEventHandler(this.tb_login_Validating);
             // 
-            // pb_logo
+            // PbLogo
             // 
-            this.pb_logo.Image = global::Diplom.Properties.Resources.Logos;
-            this.pb_logo.Location = new System.Drawing.Point(41, 31);
-            this.pb_logo.Margin = new System.Windows.Forms.Padding(2);
-            this.pb_logo.Name = "pb_logo";
-            this.pb_logo.Size = new System.Drawing.Size(134, 139);
-            this.pb_logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pb_logo.TabIndex = 8;
-            this.pb_logo.TabStop = false;
+            this.PbLogo.Image = global::Diplom.Properties.Resources.Logos;
+            this.PbLogo.Location = new System.Drawing.Point(41, 31);
+            this.PbLogo.Margin = new System.Windows.Forms.Padding(2);
+            this.PbLogo.Name = "PbLogo";
+            this.PbLogo.Size = new System.Drawing.Size(134, 139);
+            this.PbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.PbLogo.TabIndex = 8;
+            this.PbLogo.TabStop = false;
             // 
-            // pl_workplace
+            // PnlMain
             // 
-            this.pl_workplace.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.pl_workplace.Controls.Add(this.lb_title);
-            this.pl_workplace.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pl_workplace.Location = new System.Drawing.Point(0, 0);
-            this.pl_workplace.Margin = new System.Windows.Forms.Padding(2);
-            this.pl_workplace.Name = "pl_workplace";
-            this.pl_workplace.Size = new System.Drawing.Size(216, 26);
-            this.pl_workplace.TabIndex = 1;
+            this.PnlMain.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.PnlMain.Controls.Add(this.LblTitle);
+            this.PnlMain.Dock = System.Windows.Forms.DockStyle.Top;
+            this.PnlMain.Location = new System.Drawing.Point(0, 0);
+            this.PnlMain.Margin = new System.Windows.Forms.Padding(2);
+            this.PnlMain.Name = "PnlMain";
+            this.PnlMain.Size = new System.Drawing.Size(216, 26);
+            this.PnlMain.TabIndex = 1;
             // 
-            // lb_title
+            // LblTitle
             // 
-            this.lb_title.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lb_title.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lb_title.Location = new System.Drawing.Point(0, 0);
-            this.lb_title.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lb_title.Name = "lb_title";
-            this.lb_title.Size = new System.Drawing.Size(216, 26);
-            this.lb_title.TabIndex = 0;
-            this.lb_title.Text = "Вход в систему";
-            this.lb_title.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.LblTitle.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.LblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LblTitle.Location = new System.Drawing.Point(0, 0);
+            this.LblTitle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.LblTitle.Name = "LblTitle";
+            this.LblTitle.Size = new System.Drawing.Size(216, 26);
+            this.LblTitle.TabIndex = 0;
+            this.LblTitle.Text = "Вход в систему";
+            this.LblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // pl_footer
+            // PnlFooter
             // 
-            this.pl_footer.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.pl_footer.Controls.Add(this.btn_exit);
-            this.pl_footer.Controls.Add(this.btn_login);
-            this.pl_footer.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pl_footer.Location = new System.Drawing.Point(0, 327);
-            this.pl_footer.Margin = new System.Windows.Forms.Padding(2);
-            this.pl_footer.Name = "pl_footer";
-            this.pl_footer.Size = new System.Drawing.Size(216, 31);
-            this.pl_footer.TabIndex = 0;
+            this.PnlFooter.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.PnlFooter.Controls.Add(this.BtnExit);
+            this.PnlFooter.Controls.Add(this.BtnLogin);
+            this.PnlFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.PnlFooter.Location = new System.Drawing.Point(0, 327);
+            this.PnlFooter.Margin = new System.Windows.Forms.Padding(2);
+            this.PnlFooter.Name = "PnlFooter";
+            this.PnlFooter.Size = new System.Drawing.Size(216, 31);
+            this.PnlFooter.TabIndex = 0;
             // 
-            // btn_exit
+            // BtnExit
             // 
-            this.btn_exit.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_exit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btn_exit.Location = new System.Drawing.Point(108, 0);
-            this.btn_exit.Margin = new System.Windows.Forms.Padding(2);
-            this.btn_exit.Name = "btn_exit";
-            this.btn_exit.Size = new System.Drawing.Size(108, 31);
-            this.btn_exit.TabIndex = 1;
-            this.btn_exit.Text = "Закрыть";
-            this.btn_exit.UseVisualStyleBackColor = true;
-            this.btn_exit.Click += new System.EventHandler(this.btn_exit_Click);
+            this.BtnExit.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BtnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.BtnExit.Location = new System.Drawing.Point(108, 0);
+            this.BtnExit.Margin = new System.Windows.Forms.Padding(2);
+            this.BtnExit.Name = "BtnExit";
+            this.BtnExit.Size = new System.Drawing.Size(108, 31);
+            this.BtnExit.TabIndex = 1;
+            this.BtnExit.Text = "Закрыть";
+            this.BtnExit.UseVisualStyleBackColor = true;
+            this.BtnExit.Click += new System.EventHandler(this.BtnExit_Click);
             // 
-            // btn_login
+            // BtnLogin
             // 
-            this.btn_login.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btn_login.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btn_login.Location = new System.Drawing.Point(0, 0);
-            this.btn_login.Margin = new System.Windows.Forms.Padding(2);
-            this.btn_login.Name = "btn_login";
-            this.btn_login.Size = new System.Drawing.Size(108, 31);
-            this.btn_login.TabIndex = 0;
-            this.btn_login.Text = "Вход";
-            this.btn_login.UseVisualStyleBackColor = true;
-            this.btn_login.Click += new System.EventHandler(this.btn_login_Click);
+            this.BtnLogin.Dock = System.Windows.Forms.DockStyle.Left;
+            this.BtnLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.BtnLogin.Location = new System.Drawing.Point(0, 0);
+            this.BtnLogin.Margin = new System.Windows.Forms.Padding(2);
+            this.BtnLogin.Name = "BtnLogin";
+            this.BtnLogin.Size = new System.Drawing.Size(108, 31);
+            this.BtnLogin.TabIndex = 0;
+            this.BtnLogin.Text = "Вход";
+            this.BtnLogin.UseVisualStyleBackColor = true;
+            this.BtnLogin.Click += new System.EventHandler(this.BtnLogin_Click);
             // 
             // Auth
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(216, 358);
-            this.Controls.Add(this.pl_header);
+            this.Controls.Add(this.PnlHeader);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Auth";
             this.Text = "Вход";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Auth_FormClosing);
             this.Load += new System.EventHandler(this.Auth_Load);
-            this.pl_header.ResumeLayout(false);
-            this.pl_header.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pb_logo)).EndInit();
-            this.pl_workplace.ResumeLayout(false);
-            this.pl_footer.ResumeLayout(false);
+            this.PnlHeader.ResumeLayout(false);
+            this.PnlHeader.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PbLogo)).EndInit();
+            this.PnlMain.ResumeLayout(false);
+            this.PnlFooter.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel pl_header;
-        private System.Windows.Forms.Panel pl_workplace;
-        private System.Windows.Forms.Label lb_title;
-        private System.Windows.Forms.Panel pl_footer;
-        private System.Windows.Forms.Button btn_exit;
-        private System.Windows.Forms.Button btn_login;
-        private System.Windows.Forms.PictureBox pb_logo;
-        private System.Windows.Forms.TextBox tb_password;
-        private System.Windows.Forms.TextBox tb_login;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel PnlHeader;
+        private System.Windows.Forms.Panel PnlMain;
+        private System.Windows.Forms.Label LblTitle;
+        private System.Windows.Forms.Panel PnlFooter;
+        private System.Windows.Forms.Button BtnExit;
+        private System.Windows.Forms.Button BtnLogin;
+        private System.Windows.Forms.PictureBox PbLogo;
+        private System.Windows.Forms.TextBox TxtPassword;
+        private System.Windows.Forms.TextBox TxtLogin;
+        private System.Windows.Forms.CheckBox CbPasswordShow;
+        private System.Windows.Forms.Label LblPassword;
+        private System.Windows.Forms.Label LblLogin;
         private System.Windows.Forms.LinkLabel LblRestore;
     }
 }

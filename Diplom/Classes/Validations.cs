@@ -29,8 +29,42 @@ namespace Diplom.Classes
                     return true;
             }
 
-            MessageBox.Show("Вы не ввели логин. Пожалуйста повторите ввод.", "Ошибка", MessageBoxButtons.OK);
+            MessageBox.Show("Вы не ввели адрес электронной почты. Пожалуйста повторите ввод.", "Ошибка", MessageBoxButtons.OK);
             return false;
+        }
+        /// <summary>
+        /// Валидация пароля
+        /// </summary>
+        /// <param name="password">Пароль</param>
+        /// <returns>true - валидация пройдена успешно; false - валидация не пройдена</returns>
+        public static bool ValidatePassword(string password)
+        {
+            if (password.Any(Char.IsWhiteSpace))
+            {
+                MessageBox.Show("Пароль не должен содержать пробел. Повторите ввод.", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return false;
+            }
+            else if (!password.Any(Char.IsNumber))
+            {
+                MessageBox.Show("Пароль должен содержать как минимум одну цифру. Повторите ввод.", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return false;
+            }
+            else if (!password.Any(Char.IsUpper))
+            {
+                MessageBox.Show("Пароль должен содержать как минимум одну заглавную букву. Повторите ввод.", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return false;
+            }
+            else if (!password.Any(Char.IsLower))
+            {
+                MessageBox.Show("Пароль должен содержать как минимум одну букву нижнего регистра. Повторите ввод.", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return false;
+            }
+            else if (password.Length < 6)
+            {
+                MessageBox.Show("Длина пароля должна составлять как минимум 6 символов. Повторите ввод.", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return false;
+            }
+            return true;
         }
 
 
