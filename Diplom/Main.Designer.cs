@@ -34,22 +34,25 @@ namespace Diplom
             this.pl_leftMenu = new System.Windows.Forms.Panel();
             this.pl_menu_report = new System.Windows.Forms.Panel();
             this.pl_menu_reportHighlight = new System.Windows.Forms.Panel();
-            this.btn_reports = new System.Windows.Forms.Button();
             this.pl_menu_staff = new System.Windows.Forms.Panel();
             this.pl_menu_staffHighlight = new System.Windows.Forms.Panel();
-            this.btn_staff = new System.Windows.Forms.Button();
             this.pl_menu_tickets = new System.Windows.Forms.Panel();
             this.pl_menu_ticketsHighlight = new System.Windows.Forms.Panel();
-            this.btn_tickets = new System.Windows.Forms.Button();
-            this.btn_settings = new System.Windows.Forms.Button();
             this.pl_menu_spacer = new System.Windows.Forms.Panel();
-            this.btn_logout = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pl_header = new System.Windows.Forms.Panel();
             this.pl_currUser = new System.Windows.Forms.Panel();
             this.lb_currUser = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pl_menu_header = new System.Windows.Forms.Panel();
+            this.pl_menu_operators = new System.Windows.Forms.Panel();
+            this.pl_menu_operators_highlight = new System.Windows.Forms.Panel();
+            this.btn_operators = new System.Windows.Forms.Button();
+            this.btn_reports = new System.Windows.Forms.Button();
+            this.btn_staff = new System.Windows.Forms.Button();
+            this.btn_tickets = new System.Windows.Forms.Button();
+            this.btn_settings = new System.Windows.Forms.Button();
+            this.btn_logout = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pl_background.SuspendLayout();
             this.pl_leftMenu.SuspendLayout();
@@ -58,8 +61,9 @@ namespace Diplom
             this.pl_menu_tickets.SuspendLayout();
             this.pl_header.SuspendLayout();
             this.pl_currUser.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pl_menu_header.SuspendLayout();
+            this.pl_menu_operators.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
@@ -87,6 +91,7 @@ namespace Diplom
             // pl_leftMenu
             // 
             this.pl_leftMenu.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.pl_leftMenu.Controls.Add(this.pl_menu_operators);
             this.pl_leftMenu.Controls.Add(this.pl_menu_report);
             this.pl_leftMenu.Controls.Add(this.pl_menu_staff);
             this.pl_leftMenu.Controls.Add(this.pl_menu_tickets);
@@ -106,7 +111,7 @@ namespace Diplom
             this.pl_menu_report.Controls.Add(this.btn_reports);
             this.pl_menu_report.Dock = System.Windows.Forms.DockStyle.Top;
             this.pl_menu_report.Location = new System.Drawing.Point(0, 105);
-            this.pl_menu_report.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pl_menu_report.Margin = new System.Windows.Forms.Padding(2);
             this.pl_menu_report.Name = "pl_menu_report";
             this.pl_menu_report.Size = new System.Drawing.Size(135, 45);
             this.pl_menu_report.TabIndex = 3;
@@ -115,10 +120,153 @@ namespace Diplom
             // 
             this.pl_menu_reportHighlight.Dock = System.Windows.Forms.DockStyle.Right;
             this.pl_menu_reportHighlight.Location = new System.Drawing.Point(124, 0);
-            this.pl_menu_reportHighlight.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pl_menu_reportHighlight.Margin = new System.Windows.Forms.Padding(2);
             this.pl_menu_reportHighlight.Name = "pl_menu_reportHighlight";
             this.pl_menu_reportHighlight.Size = new System.Drawing.Size(11, 45);
             this.pl_menu_reportHighlight.TabIndex = 0;
+            // 
+            // pl_menu_staff
+            // 
+            this.pl_menu_staff.Controls.Add(this.pl_menu_staffHighlight);
+            this.pl_menu_staff.Controls.Add(this.btn_staff);
+            this.pl_menu_staff.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pl_menu_staff.Location = new System.Drawing.Point(0, 60);
+            this.pl_menu_staff.Margin = new System.Windows.Forms.Padding(2);
+            this.pl_menu_staff.Name = "pl_menu_staff";
+            this.pl_menu_staff.Size = new System.Drawing.Size(135, 45);
+            this.pl_menu_staff.TabIndex = 3;
+            // 
+            // pl_menu_staffHighlight
+            // 
+            this.pl_menu_staffHighlight.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pl_menu_staffHighlight.Location = new System.Drawing.Point(124, 0);
+            this.pl_menu_staffHighlight.Margin = new System.Windows.Forms.Padding(2);
+            this.pl_menu_staffHighlight.Name = "pl_menu_staffHighlight";
+            this.pl_menu_staffHighlight.Size = new System.Drawing.Size(11, 45);
+            this.pl_menu_staffHighlight.TabIndex = 2;
+            // 
+            // pl_menu_tickets
+            // 
+            this.pl_menu_tickets.Controls.Add(this.pl_menu_ticketsHighlight);
+            this.pl_menu_tickets.Controls.Add(this.btn_tickets);
+            this.pl_menu_tickets.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pl_menu_tickets.Location = new System.Drawing.Point(0, 15);
+            this.pl_menu_tickets.Margin = new System.Windows.Forms.Padding(2);
+            this.pl_menu_tickets.Name = "pl_menu_tickets";
+            this.pl_menu_tickets.Size = new System.Drawing.Size(135, 45);
+            this.pl_menu_tickets.TabIndex = 0;
+            // 
+            // pl_menu_ticketsHighlight
+            // 
+            this.pl_menu_ticketsHighlight.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pl_menu_ticketsHighlight.Location = new System.Drawing.Point(124, 0);
+            this.pl_menu_ticketsHighlight.Margin = new System.Windows.Forms.Padding(2);
+            this.pl_menu_ticketsHighlight.Name = "pl_menu_ticketsHighlight";
+            this.pl_menu_ticketsHighlight.Size = new System.Drawing.Size(11, 45);
+            this.pl_menu_ticketsHighlight.TabIndex = 1;
+            // 
+            // pl_menu_spacer
+            // 
+            this.pl_menu_spacer.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pl_menu_spacer.Location = new System.Drawing.Point(0, 0);
+            this.pl_menu_spacer.Margin = new System.Windows.Forms.Padding(2);
+            this.pl_menu_spacer.Name = "pl_menu_spacer";
+            this.pl_menu_spacer.Size = new System.Drawing.Size(135, 15);
+            this.pl_menu_spacer.TabIndex = 5;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 459);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(135, 12);
+            this.panel1.TabIndex = 4;
+            // 
+            // pl_header
+            // 
+            this.pl_header.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.pl_header.Controls.Add(this.pl_currUser);
+            this.pl_header.Controls.Add(this.pictureBox1);
+            this.pl_header.Controls.Add(this.pl_menu_header);
+            this.pl_header.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pl_header.Location = new System.Drawing.Point(0, 0);
+            this.pl_header.Name = "pl_header";
+            this.pl_header.Size = new System.Drawing.Size(953, 42);
+            this.pl_header.TabIndex = 0;
+            // 
+            // pl_currUser
+            // 
+            this.pl_currUser.Controls.Add(this.lb_currUser);
+            this.pl_currUser.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pl_currUser.Location = new System.Drawing.Point(161, 0);
+            this.pl_currUser.Margin = new System.Windows.Forms.Padding(2);
+            this.pl_currUser.Name = "pl_currUser";
+            this.pl_currUser.Size = new System.Drawing.Size(233, 42);
+            this.pl_currUser.TabIndex = 2;
+            // 
+            // lb_currUser
+            // 
+            this.lb_currUser.Dock = System.Windows.Forms.DockStyle.Left;
+            this.lb_currUser.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lb_currUser.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lb_currUser.Location = new System.Drawing.Point(0, 0);
+            this.lb_currUser.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lb_currUser.Name = "lb_currUser";
+            this.lb_currUser.Size = new System.Drawing.Size(233, 42);
+            this.lb_currUser.TabIndex = 1;
+            this.lb_currUser.Text = "%";
+            this.lb_currUser.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // pl_menu_header
+            // 
+            this.pl_menu_header.Controls.Add(this.pictureBox2);
+            this.pl_menu_header.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pl_menu_header.Location = new System.Drawing.Point(0, 0);
+            this.pl_menu_header.Margin = new System.Windows.Forms.Padding(2);
+            this.pl_menu_header.Name = "pl_menu_header";
+            this.pl_menu_header.Size = new System.Drawing.Size(135, 42);
+            this.pl_menu_header.TabIndex = 3;
+            // 
+            // pl_menu_operators
+            // 
+            this.pl_menu_operators.Controls.Add(this.btn_operators);
+            this.pl_menu_operators.Controls.Add(this.pl_menu_operators_highlight);
+            this.pl_menu_operators.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pl_menu_operators.Location = new System.Drawing.Point(0, 150);
+            this.pl_menu_operators.Name = "pl_menu_operators";
+            this.pl_menu_operators.Size = new System.Drawing.Size(135, 47);
+            this.pl_menu_operators.TabIndex = 7;
+            // 
+            // pl_menu_operators_highlight
+            // 
+            this.pl_menu_operators_highlight.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pl_menu_operators_highlight.Location = new System.Drawing.Point(124, 0);
+            this.pl_menu_operators_highlight.Margin = new System.Windows.Forms.Padding(2);
+            this.pl_menu_operators_highlight.Name = "pl_menu_operators_highlight";
+            this.pl_menu_operators_highlight.Size = new System.Drawing.Size(11, 47);
+            this.pl_menu_operators_highlight.TabIndex = 1;
+            // 
+            // btn_operators
+            // 
+            this.btn_operators.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_operators.FlatAppearance.BorderSize = 0;
+            this.btn_operators.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_operators.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_operators.Image = global::Diplom.Properties.Resources.Technical_Support_28px;
+            this.btn_operators.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_operators.Location = new System.Drawing.Point(0, 0);
+            this.btn_operators.Margin = new System.Windows.Forms.Padding(3, 3, 3, 1);
+            this.btn_operators.Name = "btn_operators";
+            this.btn_operators.Padding = new System.Windows.Forms.Padding(0, 0, 22, 0);
+            this.btn_operators.Size = new System.Drawing.Size(124, 47);
+            this.btn_operators.TabIndex = 3;
+            this.btn_operators.Text = "Операторы";
+            this.btn_operators.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_operators.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btn_operators.UseVisualStyleBackColor = true;
+            this.btn_operators.Click += new System.EventHandler(this.btn_operators_Click);
             // 
             // btn_reports
             // 
@@ -139,26 +287,6 @@ namespace Diplom
             this.btn_reports.UseVisualStyleBackColor = true;
             this.btn_reports.Click += new System.EventHandler(this.btn_reports_Click);
             // 
-            // pl_menu_staff
-            // 
-            this.pl_menu_staff.Controls.Add(this.pl_menu_staffHighlight);
-            this.pl_menu_staff.Controls.Add(this.btn_staff);
-            this.pl_menu_staff.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pl_menu_staff.Location = new System.Drawing.Point(0, 60);
-            this.pl_menu_staff.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.pl_menu_staff.Name = "pl_menu_staff";
-            this.pl_menu_staff.Size = new System.Drawing.Size(135, 45);
-            this.pl_menu_staff.TabIndex = 3;
-            // 
-            // pl_menu_staffHighlight
-            // 
-            this.pl_menu_staffHighlight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pl_menu_staffHighlight.Location = new System.Drawing.Point(124, 0);
-            this.pl_menu_staffHighlight.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.pl_menu_staffHighlight.Name = "pl_menu_staffHighlight";
-            this.pl_menu_staffHighlight.Size = new System.Drawing.Size(11, 45);
-            this.pl_menu_staffHighlight.TabIndex = 2;
-            // 
             // btn_staff
             // 
             this.btn_staff.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -176,26 +304,6 @@ namespace Diplom
             this.btn_staff.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_staff.UseVisualStyleBackColor = true;
             this.btn_staff.Click += new System.EventHandler(this.btn_staff_Click);
-            // 
-            // pl_menu_tickets
-            // 
-            this.pl_menu_tickets.Controls.Add(this.pl_menu_ticketsHighlight);
-            this.pl_menu_tickets.Controls.Add(this.btn_tickets);
-            this.pl_menu_tickets.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pl_menu_tickets.Location = new System.Drawing.Point(0, 15);
-            this.pl_menu_tickets.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.pl_menu_tickets.Name = "pl_menu_tickets";
-            this.pl_menu_tickets.Size = new System.Drawing.Size(135, 45);
-            this.pl_menu_tickets.TabIndex = 0;
-            // 
-            // pl_menu_ticketsHighlight
-            // 
-            this.pl_menu_ticketsHighlight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pl_menu_ticketsHighlight.Location = new System.Drawing.Point(124, 0);
-            this.pl_menu_ticketsHighlight.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.pl_menu_ticketsHighlight.Name = "pl_menu_ticketsHighlight";
-            this.pl_menu_ticketsHighlight.Size = new System.Drawing.Size(11, 45);
-            this.pl_menu_ticketsHighlight.TabIndex = 1;
             // 
             // btn_tickets
             // 
@@ -237,15 +345,6 @@ namespace Diplom
             this.btn_settings.Visible = false;
             this.btn_settings.Click += new System.EventHandler(this.btn_settings_Click);
             // 
-            // pl_menu_spacer
-            // 
-            this.pl_menu_spacer.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pl_menu_spacer.Location = new System.Drawing.Point(0, 0);
-            this.pl_menu_spacer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.pl_menu_spacer.Name = "pl_menu_spacer";
-            this.pl_menu_spacer.Size = new System.Drawing.Size(135, 15);
-            this.pl_menu_spacer.TabIndex = 5;
-            // 
             // btn_logout
             // 
             this.btn_logout.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -264,72 +363,17 @@ namespace Diplom
             this.btn_logout.UseVisualStyleBackColor = true;
             this.btn_logout.Click += new System.EventHandler(this.btn_logout_Click);
             // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 459);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(135, 12);
-            this.panel1.TabIndex = 4;
-            // 
-            // pl_header
-            // 
-            this.pl_header.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.pl_header.Controls.Add(this.pl_currUser);
-            this.pl_header.Controls.Add(this.pictureBox1);
-            this.pl_header.Controls.Add(this.pl_menu_header);
-            this.pl_header.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pl_header.Location = new System.Drawing.Point(0, 0);
-            this.pl_header.Name = "pl_header";
-            this.pl_header.Size = new System.Drawing.Size(953, 42);
-            this.pl_header.TabIndex = 0;
-            // 
-            // pl_currUser
-            // 
-            this.pl_currUser.Controls.Add(this.lb_currUser);
-            this.pl_currUser.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pl_currUser.Location = new System.Drawing.Point(161, 0);
-            this.pl_currUser.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.pl_currUser.Name = "pl_currUser";
-            this.pl_currUser.Size = new System.Drawing.Size(233, 42);
-            this.pl_currUser.TabIndex = 2;
-            // 
-            // lb_currUser
-            // 
-            this.lb_currUser.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lb_currUser.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lb_currUser.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lb_currUser.Location = new System.Drawing.Point(0, 0);
-            this.lb_currUser.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lb_currUser.Name = "lb_currUser";
-            this.lb_currUser.Size = new System.Drawing.Size(233, 42);
-            this.lb_currUser.TabIndex = 1;
-            this.lb_currUser.Text = "%";
-            this.lb_currUser.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // pictureBox1
             // 
             this.pictureBox1.BackgroundImage = global::Diplom.Properties.Resources.user_32px_dark;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Left;
             this.pictureBox1.Location = new System.Drawing.Point(135, 0);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(26, 42);
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
-            // 
-            // pl_menu_header
-            // 
-            this.pl_menu_header.Controls.Add(this.pictureBox2);
-            this.pl_menu_header.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pl_menu_header.Location = new System.Drawing.Point(0, 0);
-            this.pl_menu_header.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.pl_menu_header.Name = "pl_menu_header";
-            this.pl_menu_header.Size = new System.Drawing.Size(135, 42);
-            this.pl_menu_header.TabIndex = 3;
             // 
             // pictureBox2
             // 
@@ -337,7 +381,7 @@ namespace Diplom
             this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox2.Image = global::Diplom.Properties.Resources.menu_32px_dark;
             this.pictureBox2.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(135, 42);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -361,8 +405,9 @@ namespace Diplom
             this.pl_menu_tickets.ResumeLayout(false);
             this.pl_header.ResumeLayout(false);
             this.pl_currUser.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.pl_menu_header.ResumeLayout(false);
+            this.pl_menu_operators.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
@@ -392,6 +437,9 @@ namespace Diplom
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel pl_menu_header;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Panel pl_menu_operators;
+        private System.Windows.Forms.Button btn_operators;
+        private System.Windows.Forms.Panel pl_menu_operators_highlight;
     }
 }
 

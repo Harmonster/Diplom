@@ -117,41 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="ErrEmail.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <metadata name="TmrEmail.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>113, 17</value>
-  </metadata>
-  <metadata name="successOk.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>215, 17</value>
-  </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="successOk.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAMAQAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABRrkssT7BNdFCvS59Qr0ufUK9Lc02yTSsAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAE6xTg1RrkyhUK9M/lCvTP9Qr0z/UK9M/1CvTP9Qr0z+UK9Ln1Wq
-        VQwAAAAAAAAAAAAAAAAAAAAAAAAAAE6xTg1Qr0zPUK9M/1CvTP9Qr0z/UK9M/1CvTP9Qr0z/UK9M/1Cv
-        TP9Qr0zOVapVDAAAAAAAAAAAAAAAAAAAAABQr0yiUK9M/1CvTP9Qr0z/UrFQ/1KxUP9Qr0z/UK9M/1Cv
-        TP9Qr0z/UK9M/1GuTJ4AAAAAAAAAAAAAAABTrE0oUK9M/VCvTP9Qr0z/UbFP/3vmo/985aL/UbFP/1Cv
-        TP9Qr0z/UK9M/1CvTP9Qr0z9Ua5KJgAAAAAAAAAAUa5Ne1CvTP9Qr0z/UrFQ/33op/+M+cP/i/rD/37o
-        p/9SslD/UK9M/1CvTP9Qr0z/UK9M/1GuTXgAAAAAAAAAAFCvS59Qr0z/UK9M/3Pakf+L+MH/XL5k/1y/
-        Zf+L+cP/f+mq/1KyUP9Qr0z/UK9M/1CvTP9RrkyeAAAAAAAAAABQr0ufUK9M/1CvTP9Ts1L/Wbtf/1Cv
-        TP9Qr0z/XL5k/4v5wv9/6qr/U7JR/1CvTP9Qr0z/Ua5MngAAAAAAAAAAUK9MfFCvTP9Qr0z/UK9M/1Cv
-        TP9Qr0z/UK9M/1CvTP9dwGf/jPrE/33npv9SsVD/UK9M/1CvTHkAAAAAAAAAAE+wSi1Qr0z+UK9M/1Cv
-        TP9Qr0z/UK9M/1CvTP9Qr0z/UK9M/1u8Yf+G8rj/W71i/1CvTP5Nsk0rAAAAAAAAAAAAAAAAUK9MrFCv
-        TP9Qr0z/UK9M/1CvTP9Qr0z/UK9M/1CvTP9Qr0z/ULBN/1CvTP9Qr0yoAAAAAAAAAAAAAAAAAAAAAFCv
-        UBBRrkzRUK9M/1CvTP9Qr0z/UK9M/1CvTP9Qr0z/UK9M/1CvTP9Qr0zQVapEDwAAAAAAAAAAAAAAAAAA
-        AAAAAAAAUK9QEFCvTa1Qr0z/UK9M/1CvTP9Qr0z/UK9M/1CvTP5RrkyrVapEDwAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAUa5ML1CvTYJPsEykT7BMpE+wS4FOsU4uAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAA//8AAP5/AADwDwAA4AcAAMADAADAAwAAwAMAAIABAACAAQAAwAMAAMADAADAAwAA4AcAAPAP
-        AAD8PwAA//8AAA==
-</value>
-  </data>
-  <metadata name="TmrSecret.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>323, 17</value>
-  </metadata>
 </root>

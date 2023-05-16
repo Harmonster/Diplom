@@ -8,6 +8,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System;
+
 namespace Diplom.Properties {
     
     
@@ -33,5 +35,38 @@ namespace Diplom.Properties {
                 return ((string)(this["DBConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("smtp.gmail.com")]
+        public string SmtpServer {
+            get {
+                return ((string)(this["SmtpServer"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("dennyharmless@gmail.com")]
+        public string SmtpEmail {
+            get {
+                return ((string)(this["SmtpEmail"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("vzvmepndhxgecqko")]
+        public string SmtpPassword {
+            get {
+                return ((string)(this["SmtpPassword"]));
+            }
+        }
+
+        public int TimerLeft { get; internal set; }
+        public int TimerNumber { get; internal set; }
+
+        public string Email { get; internal set; }
+        public int LastChoice { get; internal set; }
     }
 }

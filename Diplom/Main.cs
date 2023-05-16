@@ -42,12 +42,11 @@ namespace Diplom
         {
             lb_currUser.Text = Classes.AuthorizedUserInfo.UserName;
             OpenChildForm(new Tickets(), sender);
-            
-            //if (AuthorizedUserInfo.UserRole == "Администратор")
-            //{
-            //    pl_menu_operators.Show();
-            //    this.Text += " РЕЖИМ АДМИНИСТРАТОРА";
-            //}
+
+            if (Classes.AuthorizedUserInfo.UserRole != "Администратор")
+            {
+                pl_menu_operators.Hide();
+            }
         }
 
         private void Main_FormClosing(object sender, FormClosingEventArgs e)
@@ -76,6 +75,11 @@ namespace Diplom
             Auth authForm = new Auth();
             this.Hide();
             authForm.Show();
+        }
+
+        private void btn_operators_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new Operators(), sender);
         }
     }
 }

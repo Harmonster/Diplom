@@ -240,7 +240,7 @@ namespace Diplom.Classes
                     Connection.Open();
                     if (cmd.ExecuteNonQuery() > 0)
                     {
-                        MessageBox.Show("Запись успешна удалена.", "Успех", MessageBoxButtons.OK);
+                        MessageBox.Show("Запись успешна удалена.", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
                 catch (Exception)

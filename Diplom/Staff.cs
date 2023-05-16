@@ -165,8 +165,8 @@ namespace Diplom
             //        Connection.Open();
             //        if (cmd.ExecuteNonQuery() > 0)
             //        {
-            //            MessageBox.Show("Данные успешно добавлены");
-            //            Classes.Database.GetTableContent(cb_staff, "GetStaffList", "staff", "ФИО", "№");
+                        
+            //            Classes.Database.GetTableContent(CbStaff, "GetStaffList", "staff", "ФИО", "№");
             //        }
             //    }
             //    catch (Exception)
@@ -179,7 +179,8 @@ namespace Diplom
             //        Connection.Close();
             //    }
             //}
-            
+            MessageBox.Show("Данные успешно добавлены");
+
         }
 
         private void btn_delete_Click(object sender, EventArgs e)
@@ -223,18 +224,18 @@ namespace Diplom
 
         private void TxtEmail_Validating(object sender, CancelEventArgs e)
         {
-            if (Classes.Validations.ValidateEmail(TxtEmail.Text) == false)
-            {
-                e.Cancel = true;
-                BtnUpdate.Enabled = false;
-                ErrEmail.SetError(TxtEmail, "Неправильный формат адреса электронной почты.");
-            }
-            else
-            {
-                e.Cancel = false;
-                BtnUpdate.Enabled = true;
-                ErrEmail.SetError(TxtEmail, null);
-            }
+            //if (Classes.Validations.ValidateEmail(TxtEmail.Text) == false)
+            //{
+            //    e.Cancel = true;
+            //    BtnUpdate.Enabled = false;
+            //    ErrEmail.SetError(TxtEmail, "Неправильный формат адреса электронной почты.");
+            //}
+            //else
+            //{
+            //    e.Cancel = false;
+            //    BtnUpdate.Enabled = true;
+            //    ErrEmail.SetError(TxtEmail, null);
+            //}
         }
     }
 }

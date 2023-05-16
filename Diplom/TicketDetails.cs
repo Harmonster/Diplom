@@ -34,7 +34,13 @@ namespace Diplom
 
         private void btn_update_Click(object sender, EventArgs e)
         {
-            UpdateTicketStatusById();
+            DialogResult dr = MessageBox.Show("Вы действительно хотите изменить запись?", "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dr == DialogResult.Yes)
+            {
+                UpdateTicketStatusById();
+            }
+            else
+                return;
         }
 
         private void TicketDetails_Load(object sender, EventArgs e)

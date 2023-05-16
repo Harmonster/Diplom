@@ -31,36 +31,50 @@ namespace Diplom
                 MessageBox.Show("Вы не ввели логин. Пожалуйста повторите ввод.", "Ошибка", MessageBoxButtons.OK);
                 return;
             }
-            else if (string.IsNullOrEmpty(TxtPassword.Text))
+
+            if (string.IsNullOrEmpty(TxtPassword.Text))
             {
                 MessageBox.Show("Вы не ввели пароль. Пожалуйста повторите ввод.", "Ошибка", MessageBoxButtons.OK);
                 return;
             }
-            else
+
+            if (Classes.AuthorizedUserInfo.AuthorizationOperator(TxtLogin, TxtPassword, "AuthorizationOperator") == true)
             {
-                if (Classes.AuthorizedUserInfo.AuthorizationOperator(TxtLogin, TxtPassword, "AuthorizationOperator") == true)
+                if (Classes.AuthorizedUserInfo.firstLogin == 1)
+                {
+                    FirstAuth auth = new FirstAuth();
+                    DialogResult dr = auth.ShowDialog();
+
+                    if (dr == DialogResult.OK)
+                    {
+                        Main form = new Main();
+                        this.Hide();
+                        form.Show();
+                    }
+                }
+                else
                 {
                     Main form = new Main();
                     this.Hide();
                     form.Show();
                 }
-                else
-                {
-                    MessageBox.Show("Запись с такими данными не найдена. Перепроверьте вводимые данные.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
+            }
+            else
+            {
+                MessageBox.Show("Запись с такими данными не найдена. Перепроверьте вводимые данные.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
         }
 
         private void Auth_Load(object sender, EventArgs e)
         {
             //tb_login.Text = "dennyharmless@gmail.com";
-            //tb_password.Text = "12345678";
+            //tb_password.Text = "Qwerty123";
             //tb_login.Text = "ivanov@mail.ru";
             //tb_password.Text = "1234567";
             TxtLogin.Text = "petrov@hotmail.com";
-            TxtPassword.Text = "qwerty123";
-            //Clipboard.SetText(GetHashedPassword(tbp_password.Text));
+            TxtPassword.Text = "Qwerty1234";
+            Clipboard.SetText(PasswordHash.GetHashedPassword(TxtPassword.Text));
         }
 
         private void Auth_FormClosing(object sender, FormClosingEventArgs e)
@@ -70,8 +84,10 @@ namespace Diplom
 
         private void tb_login_Validating(object sender, CancelEventArgs e)
         {
-            if (Classes.Validations.ValidateEmail(TxtLogin.Text) == false)
+            var validationResult = Classes.Validations.ValidateEmail(TxtLogin.Text);
+            if (validationResult.Item1 == false)
             {
+                MessageBox.Show(validationResult.Item2, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 BtnLogin.Enabled = false;
             }
             else

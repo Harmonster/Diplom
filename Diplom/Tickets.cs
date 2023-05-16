@@ -178,8 +178,15 @@ namespace Diplom
 
         private void TsbTicketDelete_Click(object sender, EventArgs e)
         {
-            Classes.Database.DeleteTicketById(currTicketId);
-            FormLoad();
+            DialogResult dr = MessageBox.Show("Вы действительно хотите удалить запись?", "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dr == DialogResult.Yes)
+            {
+                Classes.Database.DeleteTicketById(currTicketId);
+                FormLoad();
+            }
+            else
+                return;
+
         }
 
         private void BtnSearchReset_Click(object sender, EventArgs e)

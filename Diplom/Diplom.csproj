@@ -185,6 +185,10 @@
     <Compile Include="Auth.Designer.cs">
       <DependentUpon>Auth.cs</DependentUpon>
     </Compile>
+    <None Include="Resources\Technical Support_32px.png" />
+    <None Include="Resources\Technical Support_28px.png" />
+    <Content Include="TODO.txt" />
+    <Content Include="Class1.txt" />
     <Compile Include="Classes\ApplicationSettings.cs" />
     <Compile Include="Classes\AuthorizedUserInfo.cs" />
     <Compile Include="Classes\Database.cs" />
@@ -199,11 +203,23 @@
     <Compile Include="Custom Elements\textboxwithplaceholder.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="FirstAuth.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FirstAuth.Designer.cs">
+      <DependentUpon>FirstAuth.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Operators.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Operators.Designer.cs">
+      <DependentUpon>Operators.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -243,14 +259,21 @@
     <Compile Include="Tickets.Designer.cs">
       <DependentUpon>Tickets.cs</DependentUpon>
     </Compile>
+    <None Include="Resources\icons8_ok_16.png" />
     <EmbeddedResource Include="Auth.resx">
       <DependentUpon>Auth.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CreateTicket.resx">
       <DependentUpon>CreateTicket.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FirstAuth.resx">
+      <DependentUpon>FirstAuth.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Operators.resx">
+      <DependentUpon>Operators.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -388,6 +411,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\reset_25px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\question_mark_16px.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

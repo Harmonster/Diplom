@@ -103,6 +103,16 @@ namespace Diplom.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_ok_16 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_ok_16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap last_32px {
             get {
                 object obj = ResourceManager.GetObject("last_32px", resourceCulture);
@@ -163,6 +173,16 @@ namespace Diplom.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap question_mark_16px {
+            get {
+                object obj = ResourceManager.GetObject("question_mark_16px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap report_32px_dark {
             get {
                 object obj = ResourceManager.GetObject("report_32px_dark", resourceCulture);
@@ -196,6 +216,26 @@ namespace Diplom.Properties {
         internal static System.Drawing.Bitmap staff_32px_dark {
             get {
                 object obj = ResourceManager.GetObject("staff_32px_dark", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Technical_Support_28px {
+            get {
+                object obj = ResourceManager.GetObject("Technical Support_28px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Technical_Support_32px {
+            get {
+                object obj = ResourceManager.GetObject("Technical Support_32px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -14,6 +14,7 @@ namespace Diplom.Classes
         public static string UserName;
         public static string UserRole;
         public static int UserId;
+        public static int firstLogin;
 
         public static bool AuthorizationOperator(TextBox TbxLogin, TextBox TbxPassword, string StoredProcedureName)
         {
@@ -31,9 +32,10 @@ namespace Diplom.Classes
                     da.Fill(dt);
                     if (dt.Rows.Count == 1)
                     {
-                        UserName = dt.Rows[0]["name_operator"].ToString();
+                        UserName = dt.Rows[0]["shortname_operator"].ToString();
                         UserRole = dt.Rows[0]["role_operator"].ToString();
                         UserId = Convert.ToInt32(dt.Rows[0]["id_operator"]);
+                        firstLogin = Convert.ToInt32(dt.Rows[0]["firstLogin"]);
                         return true;
                     }
                     else
