@@ -29,41 +29,42 @@ namespace Diplom
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.pl_background = new System.Windows.Forms.Panel();
             this.pl_workplace = new System.Windows.Forms.Panel();
             this.pl_leftMenu = new System.Windows.Forms.Panel();
+            this.pl_menu_operators = new System.Windows.Forms.Panel();
+            this.btn_operators = new System.Windows.Forms.Button();
+            this.pl_menu_operators_highlight = new System.Windows.Forms.Panel();
             this.pl_menu_report = new System.Windows.Forms.Panel();
             this.pl_menu_reportHighlight = new System.Windows.Forms.Panel();
+            this.btn_reports = new System.Windows.Forms.Button();
             this.pl_menu_staff = new System.Windows.Forms.Panel();
             this.pl_menu_staffHighlight = new System.Windows.Forms.Panel();
+            this.btn_staff = new System.Windows.Forms.Button();
             this.pl_menu_tickets = new System.Windows.Forms.Panel();
             this.pl_menu_ticketsHighlight = new System.Windows.Forms.Panel();
+            this.btn_tickets = new System.Windows.Forms.Button();
+            this.btn_settings = new System.Windows.Forms.Button();
             this.pl_menu_spacer = new System.Windows.Forms.Panel();
+            this.btn_logout = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pl_header = new System.Windows.Forms.Panel();
             this.pl_currUser = new System.Windows.Forms.Panel();
             this.lb_currUser = new System.Windows.Forms.Label();
-            this.pl_menu_header = new System.Windows.Forms.Panel();
-            this.pl_menu_operators = new System.Windows.Forms.Panel();
-            this.pl_menu_operators_highlight = new System.Windows.Forms.Panel();
-            this.btn_operators = new System.Windows.Forms.Button();
-            this.btn_reports = new System.Windows.Forms.Button();
-            this.btn_staff = new System.Windows.Forms.Button();
-            this.btn_tickets = new System.Windows.Forms.Button();
-            this.btn_settings = new System.Windows.Forms.Button();
-            this.btn_logout = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pl_menu_header = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pl_background.SuspendLayout();
             this.pl_leftMenu.SuspendLayout();
+            this.pl_menu_operators.SuspendLayout();
             this.pl_menu_report.SuspendLayout();
             this.pl_menu_staff.SuspendLayout();
             this.pl_menu_tickets.SuspendLayout();
             this.pl_header.SuspendLayout();
             this.pl_currUser.SuspendLayout();
-            this.pl_menu_header.SuspendLayout();
-            this.pl_menu_operators.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.pl_menu_header.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
@@ -105,6 +106,45 @@ namespace Diplom
             this.pl_leftMenu.Size = new System.Drawing.Size(135, 471);
             this.pl_leftMenu.TabIndex = 1;
             // 
+            // pl_menu_operators
+            // 
+            this.pl_menu_operators.Controls.Add(this.btn_operators);
+            this.pl_menu_operators.Controls.Add(this.pl_menu_operators_highlight);
+            this.pl_menu_operators.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pl_menu_operators.Location = new System.Drawing.Point(0, 150);
+            this.pl_menu_operators.Name = "pl_menu_operators";
+            this.pl_menu_operators.Size = new System.Drawing.Size(135, 47);
+            this.pl_menu_operators.TabIndex = 7;
+            // 
+            // btn_operators
+            // 
+            this.btn_operators.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_operators.FlatAppearance.BorderSize = 0;
+            this.btn_operators.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_operators.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_operators.Image = global::Diplom.Properties.Resources.Technical_Support_28px;
+            this.btn_operators.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_operators.Location = new System.Drawing.Point(0, 0);
+            this.btn_operators.Margin = new System.Windows.Forms.Padding(3, 3, 3, 1);
+            this.btn_operators.Name = "btn_operators";
+            this.btn_operators.Padding = new System.Windows.Forms.Padding(0, 0, 22, 0);
+            this.btn_operators.Size = new System.Drawing.Size(124, 47);
+            this.btn_operators.TabIndex = 3;
+            this.btn_operators.Text = "Операторы";
+            this.btn_operators.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_operators.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btn_operators.UseVisualStyleBackColor = true;
+            this.btn_operators.Click += new System.EventHandler(this.btn_operators_Click);
+            // 
+            // pl_menu_operators_highlight
+            // 
+            this.pl_menu_operators_highlight.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pl_menu_operators_highlight.Location = new System.Drawing.Point(124, 0);
+            this.pl_menu_operators_highlight.Margin = new System.Windows.Forms.Padding(2);
+            this.pl_menu_operators_highlight.Name = "pl_menu_operators_highlight";
+            this.pl_menu_operators_highlight.Size = new System.Drawing.Size(11, 47);
+            this.pl_menu_operators_highlight.TabIndex = 1;
+            // 
             // pl_menu_report
             // 
             this.pl_menu_report.Controls.Add(this.pl_menu_reportHighlight);
@@ -124,6 +164,25 @@ namespace Diplom
             this.pl_menu_reportHighlight.Name = "pl_menu_reportHighlight";
             this.pl_menu_reportHighlight.Size = new System.Drawing.Size(11, 45);
             this.pl_menu_reportHighlight.TabIndex = 0;
+            // 
+            // btn_reports
+            // 
+            this.btn_reports.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_reports.FlatAppearance.BorderSize = 0;
+            this.btn_reports.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_reports.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_reports.Image = global::Diplom.Properties.Resources.report_32px_dark;
+            this.btn_reports.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_reports.Location = new System.Drawing.Point(0, 0);
+            this.btn_reports.Margin = new System.Windows.Forms.Padding(3, 3, 3, 1);
+            this.btn_reports.Name = "btn_reports";
+            this.btn_reports.Padding = new System.Windows.Forms.Padding(0, 0, 22, 0);
+            this.btn_reports.Size = new System.Drawing.Size(135, 45);
+            this.btn_reports.TabIndex = 2;
+            this.btn_reports.Text = "Отчёт";
+            this.btn_reports.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btn_reports.UseVisualStyleBackColor = true;
+            this.btn_reports.Click += new System.EventHandler(this.btn_reports_Click);
             // 
             // pl_menu_staff
             // 
@@ -145,6 +204,24 @@ namespace Diplom
             this.pl_menu_staffHighlight.Size = new System.Drawing.Size(11, 45);
             this.pl_menu_staffHighlight.TabIndex = 2;
             // 
+            // btn_staff
+            // 
+            this.btn_staff.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_staff.FlatAppearance.BorderSize = 0;
+            this.btn_staff.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_staff.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_staff.Image = global::Diplom.Properties.Resources.staff_32px_dark;
+            this.btn_staff.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_staff.Location = new System.Drawing.Point(0, 0);
+            this.btn_staff.Margin = new System.Windows.Forms.Padding(3, 3, 3, 1);
+            this.btn_staff.Name = "btn_staff";
+            this.btn_staff.Size = new System.Drawing.Size(135, 45);
+            this.btn_staff.TabIndex = 1;
+            this.btn_staff.Text = "Сотрудники";
+            this.btn_staff.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btn_staff.UseVisualStyleBackColor = true;
+            this.btn_staff.Click += new System.EventHandler(this.btn_staff_Click);
+            // 
             // pl_menu_tickets
             // 
             this.pl_menu_tickets.Controls.Add(this.pl_menu_ticketsHighlight);
@@ -165,6 +242,46 @@ namespace Diplom
             this.pl_menu_ticketsHighlight.Size = new System.Drawing.Size(11, 45);
             this.pl_menu_ticketsHighlight.TabIndex = 1;
             // 
+            // btn_tickets
+            // 
+            this.btn_tickets.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_tickets.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_tickets.FlatAppearance.BorderSize = 0;
+            this.btn_tickets.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_tickets.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_tickets.Image = global::Diplom.Properties.Resources.tickets_32px;
+            this.btn_tickets.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_tickets.Location = new System.Drawing.Point(0, 0);
+            this.btn_tickets.Margin = new System.Windows.Forms.Padding(3, 3, 3, 1);
+            this.btn_tickets.Name = "btn_tickets";
+            this.btn_tickets.Padding = new System.Windows.Forms.Padding(0, 0, 22, 0);
+            this.btn_tickets.Size = new System.Drawing.Size(135, 45);
+            this.btn_tickets.TabIndex = 0;
+            this.btn_tickets.Text = "Заявки";
+            this.btn_tickets.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btn_tickets.UseVisualStyleBackColor = true;
+            this.btn_tickets.Click += new System.EventHandler(this.btn_tickets_Click);
+            // 
+            // btn_settings
+            // 
+            this.btn_settings.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btn_settings.Enabled = false;
+            this.btn_settings.FlatAppearance.BorderSize = 0;
+            this.btn_settings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_settings.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_settings.Image = global::Diplom.Properties.Resources.settings_32px_dark;
+            this.btn_settings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_settings.Location = new System.Drawing.Point(0, 369);
+            this.btn_settings.Margin = new System.Windows.Forms.Padding(3, 3, 3, 1);
+            this.btn_settings.Name = "btn_settings";
+            this.btn_settings.Size = new System.Drawing.Size(135, 45);
+            this.btn_settings.TabIndex = 3;
+            this.btn_settings.Text = "Настройки";
+            this.btn_settings.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btn_settings.UseVisualStyleBackColor = true;
+            this.btn_settings.Visible = false;
+            this.btn_settings.Click += new System.EventHandler(this.btn_settings_Click);
+            // 
             // pl_menu_spacer
             // 
             this.pl_menu_spacer.Dock = System.Windows.Forms.DockStyle.Top;
@@ -173,6 +290,24 @@ namespace Diplom
             this.pl_menu_spacer.Name = "pl_menu_spacer";
             this.pl_menu_spacer.Size = new System.Drawing.Size(135, 15);
             this.pl_menu_spacer.TabIndex = 5;
+            // 
+            // btn_logout
+            // 
+            this.btn_logout.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btn_logout.FlatAppearance.BorderSize = 0;
+            this.btn_logout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_logout.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_logout.Image = global::Diplom.Properties.Resources.logout_32px_dark;
+            this.btn_logout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_logout.Location = new System.Drawing.Point(0, 414);
+            this.btn_logout.Margin = new System.Windows.Forms.Padding(3, 3, 3, 1);
+            this.btn_logout.Name = "btn_logout";
+            this.btn_logout.Size = new System.Drawing.Size(135, 45);
+            this.btn_logout.TabIndex = 6;
+            this.btn_logout.Text = "Выход";
+            this.btn_logout.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btn_logout.UseVisualStyleBackColor = true;
+            this.btn_logout.Click += new System.EventHandler(this.btn_logout_Click);
             // 
             // panel1
             // 
@@ -219,150 +354,6 @@ namespace Diplom
             this.lb_currUser.Text = "%";
             this.lb_currUser.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // pl_menu_header
-            // 
-            this.pl_menu_header.Controls.Add(this.pictureBox2);
-            this.pl_menu_header.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pl_menu_header.Location = new System.Drawing.Point(0, 0);
-            this.pl_menu_header.Margin = new System.Windows.Forms.Padding(2);
-            this.pl_menu_header.Name = "pl_menu_header";
-            this.pl_menu_header.Size = new System.Drawing.Size(135, 42);
-            this.pl_menu_header.TabIndex = 3;
-            // 
-            // pl_menu_operators
-            // 
-            this.pl_menu_operators.Controls.Add(this.btn_operators);
-            this.pl_menu_operators.Controls.Add(this.pl_menu_operators_highlight);
-            this.pl_menu_operators.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pl_menu_operators.Location = new System.Drawing.Point(0, 150);
-            this.pl_menu_operators.Name = "pl_menu_operators";
-            this.pl_menu_operators.Size = new System.Drawing.Size(135, 47);
-            this.pl_menu_operators.TabIndex = 7;
-            // 
-            // pl_menu_operators_highlight
-            // 
-            this.pl_menu_operators_highlight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pl_menu_operators_highlight.Location = new System.Drawing.Point(124, 0);
-            this.pl_menu_operators_highlight.Margin = new System.Windows.Forms.Padding(2);
-            this.pl_menu_operators_highlight.Name = "pl_menu_operators_highlight";
-            this.pl_menu_operators_highlight.Size = new System.Drawing.Size(11, 47);
-            this.pl_menu_operators_highlight.TabIndex = 1;
-            // 
-            // btn_operators
-            // 
-            this.btn_operators.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_operators.FlatAppearance.BorderSize = 0;
-            this.btn_operators.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_operators.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btn_operators.Image = global::Diplom.Properties.Resources.Technical_Support_28px;
-            this.btn_operators.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_operators.Location = new System.Drawing.Point(0, 0);
-            this.btn_operators.Margin = new System.Windows.Forms.Padding(3, 3, 3, 1);
-            this.btn_operators.Name = "btn_operators";
-            this.btn_operators.Padding = new System.Windows.Forms.Padding(0, 0, 22, 0);
-            this.btn_operators.Size = new System.Drawing.Size(124, 47);
-            this.btn_operators.TabIndex = 3;
-            this.btn_operators.Text = "Операторы";
-            this.btn_operators.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btn_operators.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btn_operators.UseVisualStyleBackColor = true;
-            this.btn_operators.Click += new System.EventHandler(this.btn_operators_Click);
-            // 
-            // btn_reports
-            // 
-            this.btn_reports.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_reports.FlatAppearance.BorderSize = 0;
-            this.btn_reports.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_reports.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btn_reports.Image = global::Diplom.Properties.Resources.report_32px_dark;
-            this.btn_reports.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_reports.Location = new System.Drawing.Point(0, 0);
-            this.btn_reports.Margin = new System.Windows.Forms.Padding(3, 3, 3, 1);
-            this.btn_reports.Name = "btn_reports";
-            this.btn_reports.Padding = new System.Windows.Forms.Padding(0, 0, 22, 0);
-            this.btn_reports.Size = new System.Drawing.Size(135, 45);
-            this.btn_reports.TabIndex = 2;
-            this.btn_reports.Text = "Отчёт";
-            this.btn_reports.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btn_reports.UseVisualStyleBackColor = true;
-            this.btn_reports.Click += new System.EventHandler(this.btn_reports_Click);
-            // 
-            // btn_staff
-            // 
-            this.btn_staff.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_staff.FlatAppearance.BorderSize = 0;
-            this.btn_staff.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_staff.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btn_staff.Image = global::Diplom.Properties.Resources.staff_32px_dark;
-            this.btn_staff.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_staff.Location = new System.Drawing.Point(0, 0);
-            this.btn_staff.Margin = new System.Windows.Forms.Padding(3, 3, 3, 1);
-            this.btn_staff.Name = "btn_staff";
-            this.btn_staff.Size = new System.Drawing.Size(135, 45);
-            this.btn_staff.TabIndex = 1;
-            this.btn_staff.Text = "Сотрудники";
-            this.btn_staff.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btn_staff.UseVisualStyleBackColor = true;
-            this.btn_staff.Click += new System.EventHandler(this.btn_staff_Click);
-            // 
-            // btn_tickets
-            // 
-            this.btn_tickets.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_tickets.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_tickets.FlatAppearance.BorderSize = 0;
-            this.btn_tickets.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_tickets.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btn_tickets.Image = global::Diplom.Properties.Resources.tickets_32px;
-            this.btn_tickets.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_tickets.Location = new System.Drawing.Point(0, 0);
-            this.btn_tickets.Margin = new System.Windows.Forms.Padding(3, 3, 3, 1);
-            this.btn_tickets.Name = "btn_tickets";
-            this.btn_tickets.Padding = new System.Windows.Forms.Padding(0, 0, 22, 0);
-            this.btn_tickets.Size = new System.Drawing.Size(135, 45);
-            this.btn_tickets.TabIndex = 0;
-            this.btn_tickets.Text = "Заявки";
-            this.btn_tickets.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btn_tickets.UseVisualStyleBackColor = true;
-            this.btn_tickets.Click += new System.EventHandler(this.btn_tickets_Click);
-            // 
-            // btn_settings
-            // 
-            this.btn_settings.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btn_settings.Enabled = false;
-            this.btn_settings.FlatAppearance.BorderSize = 0;
-            this.btn_settings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_settings.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btn_settings.Image = global::Diplom.Properties.Resources.settings_32px_dark;
-            this.btn_settings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_settings.Location = new System.Drawing.Point(0, 369);
-            this.btn_settings.Margin = new System.Windows.Forms.Padding(3, 3, 3, 1);
-            this.btn_settings.Name = "btn_settings";
-            this.btn_settings.Size = new System.Drawing.Size(135, 45);
-            this.btn_settings.TabIndex = 3;
-            this.btn_settings.Text = "Настройки";
-            this.btn_settings.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btn_settings.UseVisualStyleBackColor = true;
-            this.btn_settings.Visible = false;
-            this.btn_settings.Click += new System.EventHandler(this.btn_settings_Click);
-            // 
-            // btn_logout
-            // 
-            this.btn_logout.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btn_logout.FlatAppearance.BorderSize = 0;
-            this.btn_logout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_logout.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btn_logout.Image = global::Diplom.Properties.Resources.logout_32px_dark;
-            this.btn_logout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_logout.Location = new System.Drawing.Point(0, 414);
-            this.btn_logout.Margin = new System.Windows.Forms.Padding(3, 3, 3, 1);
-            this.btn_logout.Name = "btn_logout";
-            this.btn_logout.Size = new System.Drawing.Size(135, 45);
-            this.btn_logout.TabIndex = 6;
-            this.btn_logout.Text = "Выход";
-            this.btn_logout.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btn_logout.UseVisualStyleBackColor = true;
-            this.btn_logout.Click += new System.EventHandler(this.btn_logout_Click);
-            // 
             // pictureBox1
             // 
             this.pictureBox1.BackgroundImage = global::Diplom.Properties.Resources.user_32px_dark;
@@ -374,6 +365,16 @@ namespace Diplom
             this.pictureBox1.Size = new System.Drawing.Size(26, 42);
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
+            // 
+            // pl_menu_header
+            // 
+            this.pl_menu_header.Controls.Add(this.pictureBox2);
+            this.pl_menu_header.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pl_menu_header.Location = new System.Drawing.Point(0, 0);
+            this.pl_menu_header.Margin = new System.Windows.Forms.Padding(2);
+            this.pl_menu_header.Name = "pl_menu_header";
+            this.pl_menu_header.Size = new System.Drawing.Size(135, 42);
+            this.pl_menu_header.TabIndex = 3;
             // 
             // pictureBox2
             // 
@@ -394,20 +395,22 @@ namespace Diplom
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(953, 513);
             this.Controls.Add(this.pl_background);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Main";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Система заявок ККРИТ";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);
             this.Load += new System.EventHandler(this.Main_Load);
             this.pl_background.ResumeLayout(false);
             this.pl_leftMenu.ResumeLayout(false);
+            this.pl_menu_operators.ResumeLayout(false);
             this.pl_menu_report.ResumeLayout(false);
             this.pl_menu_staff.ResumeLayout(false);
             this.pl_menu_tickets.ResumeLayout(false);
             this.pl_header.ResumeLayout(false);
             this.pl_currUser.ResumeLayout(false);
-            this.pl_menu_header.ResumeLayout(false);
-            this.pl_menu_operators.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.pl_menu_header.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 

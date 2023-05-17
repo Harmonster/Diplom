@@ -29,6 +29,7 @@ namespace Diplom
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Auth));
             this.PnlHeader = new System.Windows.Forms.Panel();
             this.LblRestore = new System.Windows.Forms.LinkLabel();
             this.CbPasswordShow = new System.Windows.Forms.CheckBox();
@@ -208,6 +209,7 @@ namespace Diplom
             this.ClientSize = new System.Drawing.Size(216, 358);
             this.Controls.Add(this.PnlHeader);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Auth";
             this.Text = "Вход";

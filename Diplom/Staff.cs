@@ -98,6 +98,21 @@ namespace Diplom
 
         private void btn_update_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(TxtSurname.Text) || string.IsNullOrWhiteSpace(TxtName.Text) || string.IsNullOrWhiteSpace(TxtPatron.Text) || string.IsNullOrWhiteSpace(TxtEmail.Text) || string.IsNullOrWhiteSpace(TxtPhone.Text))
+            {
+                MessageBox.Show("Пожалуйста, заполните все поля.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            string email = TxtEmail.Text;
+            (bool isEmailValid, string validationMessage) validationResult = Classes.Validations.ValidateEmail(email);
+
+            if (!validationResult.isEmailValid)
+            {
+                MessageBox.Show(validationResult.validationMessage, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             if (TxtSurname.Text != initialSurname || TxtName.Text != initialName || TxtPatron.Text != initialPatron || TxtEmail.Text != initialEmail || TxtPhone.Text != initialPhone)
             {
                 DialogResult dr = MessageBox.Show("Вы действительно хотите изменить данные сотрудника " + CbStaff.Text + "?", "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -153,38 +168,64 @@ namespace Diplom
 
         private void btn_create_Click(object sender, EventArgs e)
         {
-            //using (MySqlConnection Connection = new MySqlConnection(Properties.Settings.Default.DBConnectionString))
-            //{
-            //    MySqlCommand cmd = new MySqlCommand("CreateStaff", Connection);
-            //    try
-            //    {
-            //        cmd.CommandType = CommandType.StoredProcedure;
-            //        cmd.Parameters.AddWithValue("@u_name", tb_name.Text);
-            //        cmd.Parameters.AddWithValue("@u_email", tb_email.Text);
-            //        cmd.Parameters.AddWithValue("@u_phone", mtb_phone.Text);
-            //        Connection.Open();
-            //        if (cmd.ExecuteNonQuery() > 0)
-            //        {
-                        
-            //            Classes.Database.GetTableContent(CbStaff, "GetStaffList", "staff", "ФИО", "№");
-            //        }
-            //    }
-            //    catch (Exception)
-            //    {
-            //        throw;
-            //    }
-            //    finally
-            //    {
-            //        cmd.Dispose();
-            //        Connection.Close();
-            //    }
-            //}
-            MessageBox.Show("Данные успешно добавлены");
+            if (string.IsNullOrWhiteSpace(TxtSurname.Text) || string.IsNullOrWhiteSpace(TxtName.Text) || string.IsNullOrWhiteSpace(TxtPatron.Text) || string.IsNullOrWhiteSpace(TxtEmail.Text) || string.IsNullOrWhiteSpace(TxtPhone.Text))
+            {
+                MessageBox.Show("Пожалуйста, заполните все поля.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            string email = TxtEmail.Text;
+            (bool isEmailValid, string validationMessage) validationResult = Classes.Validations.ValidateEmail(email);
+
+            if (!validationResult.isEmailValid)
+            {
+                MessageBox.Show(validationResult.validationMessage, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            using (MySqlConnection Connection = new MySqlConnection(Properties.Settings.Default.DBConnectionString))
+            {
+                MySqlCommand cmd = new MySqlCommand("CreateStaff", Connection);
+                try
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@u_surname", TxtSurname.Text);
+                    cmd.Parameters.AddWithValue("@u_name", TxtName.Text);
+                    cmd.Parameters.AddWithValue("@u_patron", TxtPatron.Text);
+                    cmd.Parameters.AddWithValue("@u_shortname", $"{TxtSurname.Text} {TxtName.Text[0]}.{TxtPatron.Text[0]}.");
+                    cmd.Parameters.AddWithValue("@u_email", TxtEmail.Text);
+                    cmd.Parameters.AddWithValue("@u_phone", TxtPhone.Text);
+                    Connection.Open();
+                    if (cmd.ExecuteNonQuery() > 0)
+                    {
+                        MessageBox.Show("Данные успешно добавлены.", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Classes.Database.GetTableContent(CbStaff, "GetStaffList", "staff", "ФИО", "№");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    if (ex is MySqlException mysqlEx && mysqlEx.Number == (int)MySqlErrorCode.DuplicateKeyEntry)
+                    {
+                        MessageBox.Show("Сотрудник с такими данными уже зарегистрирован. Введите другие данные.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                finally
+                {
+                    cmd.Dispose();
+                    Connection.Close();
+                }
+            }
 
         }
 
         private void btn_delete_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(TxtSurname.Text) || string.IsNullOrWhiteSpace(TxtName.Text) || string.IsNullOrWhiteSpace(TxtPatron.Text) || string.IsNullOrWhiteSpace(TxtEmail.Text))
+            {
+                MessageBox.Show("Пожалуйста, выберите запись для удаления.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             DialogResult dr = MessageBox.Show("Вы действительно хотите удалить запись о сотруднике " + CbStaff.Text + " ?", "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dr == DialogResult.Yes)
             {
@@ -204,9 +245,12 @@ namespace Diplom
                             Classes.Database.GetTableContent(CbStaff, "GetStaffList", "staff", "ФИО", "№");
                         }
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
-                        throw;
+                        if (ex is MySqlException mysqlEx && mysqlEx.Number == (int)MySqlErrorCode.RowIsReferenced2)
+                        {
+                            MessageBox.Show("Вы не можете удалить пользователя который оставлял заявки. Сначала нужно удалить их.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                     finally
                     {
@@ -222,20 +266,14 @@ namespace Diplom
             
         }
 
-        private void TxtEmail_Validating(object sender, CancelEventArgs e)
+        private void BtnClear_Click(object sender, EventArgs e)
         {
-            //if (Classes.Validations.ValidateEmail(TxtEmail.Text) == false)
-            //{
-            //    e.Cancel = true;
-            //    BtnUpdate.Enabled = false;
-            //    ErrEmail.SetError(TxtEmail, "Неправильный формат адреса электронной почты.");
-            //}
-            //else
-            //{
-            //    e.Cancel = false;
-            //    BtnUpdate.Enabled = true;
-            //    ErrEmail.SetError(TxtEmail, null);
-            //}
+            TxtSurname.Clear();
+            TxtName.Clear();
+            TxtPatron.Clear();
+            TxtEmail.Clear();
+            TxtPhone.Clear();
+            dgv_details.DataSource = null;
         }
     }
 }

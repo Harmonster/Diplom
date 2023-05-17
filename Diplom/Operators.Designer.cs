@@ -29,7 +29,9 @@ namespace Diplom
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Operators));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.BtnClear = new System.Windows.Forms.Button();
             this.BtnDelete = new System.Windows.Forms.Button();
             this.BtnUpdate = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -47,7 +49,6 @@ namespace Diplom
             this.LbEmail = new System.Windows.Forms.Label();
             this.TxtEmail = new System.Windows.Forms.TextBox();
             this.CbSearchOperators = new System.Windows.Forms.ComboBox();
-            this.BtnClear = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -77,6 +78,16 @@ namespace Diplom
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(440, 249);
             this.panel1.TabIndex = 0;
+            // 
+            // BtnClear
+            // 
+            this.BtnClear.Location = new System.Drawing.Point(320, 196);
+            this.BtnClear.Name = "BtnClear";
+            this.BtnClear.Size = new System.Drawing.Size(94, 38);
+            this.BtnClear.TabIndex = 16;
+            this.BtnClear.Text = "Очистить";
+            this.BtnClear.UseVisualStyleBackColor = true;
+            this.BtnClear.Click += new System.EventHandler(this.BtnClear_Click);
             // 
             // BtnDelete
             // 
@@ -246,22 +257,13 @@ namespace Diplom
             this.CbSearchOperators.TabIndex = 0;
             this.CbSearchOperators.SelectedIndexChanged += new System.EventHandler(this.CbSearchOperators_SelectedIndexChanged);
             // 
-            // BtnClear
-            // 
-            this.BtnClear.Location = new System.Drawing.Point(320, 196);
-            this.BtnClear.Name = "BtnClear";
-            this.BtnClear.Size = new System.Drawing.Size(94, 38);
-            this.BtnClear.TabIndex = 16;
-            this.BtnClear.Text = "Очистить";
-            this.BtnClear.UseVisualStyleBackColor = true;
-            this.BtnClear.Click += new System.EventHandler(this.BtnClear_Click);
-            // 
             // Operators
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(440, 249);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Operators";
             this.Text = "Operators";
             this.Load += new System.EventHandler(this.Operators_Load);

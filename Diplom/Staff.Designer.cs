@@ -30,7 +30,8 @@ namespace Diplom
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Staff));
             this.pl_background = new System.Windows.Forms.Panel();
             this.dgv_details = new System.Windows.Forms.DataGridView();
             this.pl_spacer = new System.Windows.Forms.Panel();
@@ -54,6 +55,7 @@ namespace Diplom
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.ErrEmail = new System.Windows.Forms.ErrorProvider(this.components);
+            this.BtnClear = new System.Windows.Forms.Button();
             this.pl_background.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_details)).BeginInit();
             this.pl_staffInfo.SuspendLayout();
@@ -79,9 +81,9 @@ namespace Diplom
             // 
             this.dgv_details.AllowUserToAddRows = false;
             this.dgv_details.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.dgv_details.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.dgv_details.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgv_details.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgv_details.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgv_details.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -109,6 +111,7 @@ namespace Diplom
             // pl_staffInfo
             // 
             this.pl_staffInfo.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.pl_staffInfo.Controls.Add(this.BtnClear);
             this.pl_staffInfo.Controls.Add(this.TxtPatron);
             this.pl_staffInfo.Controls.Add(this.LblPatron);
             this.pl_staffInfo.Controls.Add(this.TxtName);
@@ -175,10 +178,10 @@ namespace Diplom
             // BtnDelete
             // 
             this.BtnDelete.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.BtnDelete.Location = new System.Drawing.Point(64, 284);
+            this.BtnDelete.Location = new System.Drawing.Point(2, 304);
             this.BtnDelete.Margin = new System.Windows.Forms.Padding(2);
             this.BtnDelete.Name = "BtnDelete";
-            this.BtnDelete.Size = new System.Drawing.Size(133, 40);
+            this.BtnDelete.Size = new System.Drawing.Size(124, 40);
             this.BtnDelete.TabIndex = 10;
             this.BtnDelete.Text = "Удалить";
             this.BtnDelete.UseVisualStyleBackColor = true;
@@ -187,7 +190,7 @@ namespace Diplom
             // TxtPhone
             // 
             this.TxtPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.TxtPhone.Location = new System.Drawing.Point(28, 242);
+            this.TxtPhone.Location = new System.Drawing.Point(28, 202);
             this.TxtPhone.Margin = new System.Windows.Forms.Padding(2);
             this.TxtPhone.Mask = "##(###)#######";
             this.TxtPhone.Name = "TxtPhone";
@@ -235,7 +238,7 @@ namespace Diplom
             // 
             this.LblPhone.AutoSize = true;
             this.LblPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.LblPhone.Location = new System.Drawing.Point(25, 225);
+            this.LblPhone.Location = new System.Drawing.Point(25, 185);
             this.LblPhone.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.LblPhone.Name = "LblPhone";
             this.LblPhone.Size = new System.Drawing.Size(116, 15);
@@ -245,19 +248,18 @@ namespace Diplom
             // TxtEmail
             // 
             this.TxtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.TxtEmail.Location = new System.Drawing.Point(28, 202);
+            this.TxtEmail.Location = new System.Drawing.Point(28, 242);
             this.TxtEmail.Margin = new System.Windows.Forms.Padding(2);
             this.TxtEmail.MaxLength = 45;
             this.TxtEmail.Name = "TxtEmail";
             this.TxtEmail.Size = new System.Drawing.Size(204, 21);
             this.TxtEmail.TabIndex = 5;
-            this.TxtEmail.Validating += new System.ComponentModel.CancelEventHandler(this.TxtEmail_Validating);
             // 
             // LblEmail
             // 
             this.LblEmail.AutoSize = true;
             this.LblEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.LblEmail.Location = new System.Drawing.Point(25, 185);
+            this.LblEmail.Location = new System.Drawing.Point(25, 225);
             this.LblEmail.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.LblEmail.Name = "LblEmail";
             this.LblEmail.Size = new System.Drawing.Size(99, 15);
@@ -331,6 +333,18 @@ namespace Diplom
             // 
             this.ErrEmail.ContainerControl = this;
             // 
+            // BtnClear
+            // 
+            this.BtnClear.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.BtnClear.Location = new System.Drawing.Point(131, 304);
+            this.BtnClear.Margin = new System.Windows.Forms.Padding(2);
+            this.BtnClear.Name = "BtnClear";
+            this.BtnClear.Size = new System.Drawing.Size(127, 40);
+            this.BtnClear.TabIndex = 15;
+            this.BtnClear.Text = "Очистить";
+            this.BtnClear.UseVisualStyleBackColor = true;
+            this.BtnClear.Click += new System.EventHandler(this.BtnClear_Click);
+            // 
             // Staff
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -338,6 +352,7 @@ namespace Diplom
             this.ClientSize = new System.Drawing.Size(603, 405);
             this.Controls.Add(this.pl_background);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Staff";
             this.Text = "Staff";
@@ -377,5 +392,6 @@ namespace Diplom
         private System.Windows.Forms.TextBox TxtName;
         private System.Windows.Forms.Label LblName;
         private System.Windows.Forms.ErrorProvider ErrEmail;
+        private System.Windows.Forms.Button BtnClear;
     }
 }

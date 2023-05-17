@@ -29,16 +29,17 @@ namespace Diplom
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Report));
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btn_export = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dgv_report = new System.Windows.Forms.DataGridView();
             this.pl_tooltips = new System.Windows.Forms.Panel();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.rb_mode_excel = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_report)).BeginInit();
             this.pl_tooltips.SuspendLayout();
@@ -49,7 +50,7 @@ namespace Diplom
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel1.Location = new System.Drawing.Point(589, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(11, 366);
             this.panel1.TabIndex = 0;
@@ -59,7 +60,7 @@ namespace Diplom
             this.panel2.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Location = new System.Drawing.Point(0, 354);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(589, 12);
             this.panel2.TabIndex = 1;
@@ -68,7 +69,7 @@ namespace Diplom
             // 
             this.btn_export.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btn_export.Location = new System.Drawing.Point(0, 319);
-            this.btn_export.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_export.Margin = new System.Windows.Forms.Padding(2);
             this.btn_export.Name = "btn_export";
             this.btn_export.Size = new System.Drawing.Size(589, 35);
             this.btn_export.TabIndex = 2;
@@ -83,7 +84,7 @@ namespace Diplom
             this.panel3.Controls.Add(this.pl_tooltips);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(589, 319);
             this.panel3.TabIndex = 3;
@@ -92,14 +93,14 @@ namespace Diplom
             // 
             this.dgv_report.AllowUserToAddRows = false;
             this.dgv_report.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.dgv_report.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.dgv_report.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgv_report.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgv_report.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_report.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv_report.Location = new System.Drawing.Point(146, 0);
-            this.dgv_report.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgv_report.Margin = new System.Windows.Forms.Padding(2);
             this.dgv_report.Name = "dgv_report";
             this.dgv_report.ReadOnly = true;
             this.dgv_report.RowHeadersVisible = false;
@@ -115,17 +116,31 @@ namespace Diplom
             this.pl_tooltips.Controls.Add(this.label1);
             this.pl_tooltips.Dock = System.Windows.Forms.DockStyle.Left;
             this.pl_tooltips.Location = new System.Drawing.Point(0, 0);
-            this.pl_tooltips.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pl_tooltips.Margin = new System.Windows.Forms.Padding(2);
             this.pl_tooltips.Name = "pl_tooltips";
             this.pl_tooltips.Size = new System.Drawing.Size(146, 319);
             this.pl_tooltips.TabIndex = 0;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Выполненные запросы",
+            "Незакрытые срочные запросы",
+            "Запросы на доработке"});
+            this.comboBox1.Location = new System.Drawing.Point(0, 71);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(146, 21);
+            this.comboBox1.TabIndex = 4;
+            this.comboBox1.SelectionChangeCommitted += new System.EventHandler(this.comboBox1_SelectionChangeCommitted);
             // 
             // rb_mode_excel
             // 
             this.rb_mode_excel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rb_mode_excel.Location = new System.Drawing.Point(4, 294);
-            this.rb_mode_excel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rb_mode_excel.Margin = new System.Windows.Forms.Padding(2);
             this.rb_mode_excel.Name = "rb_mode_excel";
             this.rb_mode_excel.Size = new System.Drawing.Size(71, 20);
             this.rb_mode_excel.TabIndex = 3;
@@ -146,20 +161,6 @@ namespace Diplom
             this.label1.Text = "Выберите данные на экспорт";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // comboBox1
-            // 
-            this.comboBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Выполненные запросы",
-            "Незакрытые срочные запросы",
-            "Запросы на доработке"});
-            this.comboBox1.Location = new System.Drawing.Point(0, 71);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(146, 21);
-            this.comboBox1.TabIndex = 4;
-            this.comboBox1.SelectionChangeCommitted += new System.EventHandler(this.comboBox1_SelectionChangeCommitted);
-            // 
             // Report
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -169,7 +170,8 @@ namespace Diplom
             this.Controls.Add(this.btn_export);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Report";
             this.Text = "Report";
             this.Load += new System.EventHandler(this.Report_Load);

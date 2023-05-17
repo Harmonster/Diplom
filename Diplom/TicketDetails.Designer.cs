@@ -29,6 +29,7 @@ namespace Diplom
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TicketDetails));
             this.label1 = new System.Windows.Forms.Label();
             this.tb_id = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -60,7 +61,7 @@ namespace Diplom
             this.label1.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.Location = new System.Drawing.Point(28, 54);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(97, 21);
+            this.label1.Size = new System.Drawing.Size(80, 17);
             this.label1.TabIndex = 0;
             this.label1.Text = "№ Запроса";
             // 
@@ -70,7 +71,7 @@ namespace Diplom
             this.tb_id.Location = new System.Drawing.Point(128, 51);
             this.tb_id.Name = "tb_id";
             this.tb_id.ReadOnly = true;
-            this.tb_id.Size = new System.Drawing.Size(136, 28);
+            this.tb_id.Size = new System.Drawing.Size(136, 24);
             this.tb_id.TabIndex = 1;
             // 
             // label2
@@ -79,7 +80,7 @@ namespace Diplom
             this.label2.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label2.Location = new System.Drawing.Point(82, 122);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(40, 21);
+            this.label2.Size = new System.Drawing.Size(32, 17);
             this.label2.TabIndex = 2;
             this.label2.Text = "Тип";
             // 
@@ -89,7 +90,7 @@ namespace Diplom
             this.label3.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label3.Location = new System.Drawing.Point(61, 156);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(61, 21);
+            this.label3.Size = new System.Drawing.Size(55, 17);
             this.label3.TabIndex = 4;
             this.label3.Text = "Статус";
             // 
@@ -100,7 +101,7 @@ namespace Diplom
             this.cb_status.FormattingEnabled = true;
             this.cb_status.Location = new System.Drawing.Point(128, 153);
             this.cb_status.Name = "cb_status";
-            this.cb_status.Size = new System.Drawing.Size(136, 29);
+            this.cb_status.Size = new System.Drawing.Size(136, 25);
             this.cb_status.TabIndex = 5;
             // 
             // label4
@@ -109,7 +110,7 @@ namespace Diplom
             this.label4.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label4.Location = new System.Drawing.Point(32, 191);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(93, 21);
+            this.label4.Size = new System.Drawing.Size(80, 17);
             this.label4.TabIndex = 6;
             this.label4.Text = "Приоритет";
             // 
@@ -119,7 +120,7 @@ namespace Diplom
             this.tb_author.Location = new System.Drawing.Point(128, 222);
             this.tb_author.Name = "tb_author";
             this.tb_author.ReadOnly = true;
-            this.tb_author.Size = new System.Drawing.Size(136, 28);
+            this.tb_author.Size = new System.Drawing.Size(136, 24);
             this.tb_author.TabIndex = 9;
             // 
             // label5
@@ -128,7 +129,7 @@ namespace Diplom
             this.label5.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label5.Location = new System.Drawing.Point(66, 225);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(56, 21);
+            this.label5.Size = new System.Drawing.Size(47, 17);
             this.label5.TabIndex = 8;
             this.label5.Text = "Автор";
             // 
@@ -138,7 +139,7 @@ namespace Diplom
             this.tb_date.Location = new System.Drawing.Point(128, 85);
             this.tb_date.Name = "tb_date";
             this.tb_date.ReadOnly = true;
-            this.tb_date.Size = new System.Drawing.Size(136, 28);
+            this.tb_date.Size = new System.Drawing.Size(136, 24);
             this.tb_date.TabIndex = 11;
             // 
             // label6
@@ -147,7 +148,7 @@ namespace Diplom
             this.label6.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label6.Location = new System.Drawing.Point(74, 88);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(48, 21);
+            this.label6.Size = new System.Drawing.Size(40, 17);
             this.label6.TabIndex = 10;
             this.label6.Text = "Дата";
             // 
@@ -167,7 +168,7 @@ namespace Diplom
             this.label7.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label7.Location = new System.Drawing.Point(58, 264);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(67, 21);
+            this.label7.Size = new System.Drawing.Size(56, 17);
             this.label7.TabIndex = 13;
             this.label7.Text = "Детали";
             // 
@@ -233,7 +234,7 @@ namespace Diplom
             this.cb_type.FormattingEnabled = true;
             this.cb_type.Location = new System.Drawing.Point(128, 118);
             this.cb_type.Name = "cb_type";
-            this.cb_type.Size = new System.Drawing.Size(136, 29);
+            this.cb_type.Size = new System.Drawing.Size(136, 25);
             this.cb_type.TabIndex = 16;
             // 
             // cb_prio
@@ -243,7 +244,7 @@ namespace Diplom
             this.cb_prio.FormattingEnabled = true;
             this.cb_prio.Location = new System.Drawing.Point(128, 187);
             this.cb_prio.Name = "cb_prio";
-            this.cb_prio.Size = new System.Drawing.Size(136, 29);
+            this.cb_prio.Size = new System.Drawing.Size(136, 25);
             this.cb_prio.TabIndex = 17;
             // 
             // tb_type
@@ -252,7 +253,7 @@ namespace Diplom
             this.tb_type.Location = new System.Drawing.Point(128, 119);
             this.tb_type.Name = "tb_type";
             this.tb_type.ReadOnly = true;
-            this.tb_type.Size = new System.Drawing.Size(136, 28);
+            this.tb_type.Size = new System.Drawing.Size(136, 24);
             this.tb_type.TabIndex = 18;
             // 
             // tb_prio
@@ -261,12 +262,12 @@ namespace Diplom
             this.tb_prio.Location = new System.Drawing.Point(128, 188);
             this.tb_prio.Name = "tb_prio";
             this.tb_prio.ReadOnly = true;
-            this.tb_prio.Size = new System.Drawing.Size(136, 28);
+            this.tb_prio.Size = new System.Drawing.Size(136, 24);
             this.tb_prio.TabIndex = 20;
             // 
             // TicketDetails
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.ClientSize = new System.Drawing.Size(323, 465);
@@ -290,6 +291,7 @@ namespace Diplom
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "TicketDetails";
             this.Text = "Подробности";
             this.Load += new System.EventHandler(this.TicketDetails_Load);

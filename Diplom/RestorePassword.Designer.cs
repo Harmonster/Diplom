@@ -232,6 +232,7 @@ namespace Diplom
             this.ClientSize = new System.Drawing.Size(270, 389);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "RestorePassword";
             this.Text = "Сброс пароля";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.RestorePassword_FormClosing);
