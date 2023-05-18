@@ -149,7 +149,7 @@ namespace Diplom
 
         private void BtnSecretConfirm_Click(object sender, EventArgs e)
         {
-            string secret = PasswordHash.GetHashedPassword(TxtSecret.Text); 
+            string secret = Classes.HashHelper.GetHashedValue(TxtSecret.Text); 
             string email = TxtLogin.Text;
             (bool isEmailValid, string validationMessage) validationResult = Classes.Validations.ValidateEmail(email);
             result = Classes.Database.GetSecretWordByLogin(email);
@@ -237,20 +237,22 @@ namespace Diplom
 
         private void BtnCodeConfirm_Click(object sender, EventArgs e)
         {
+            string code = TxtCode.Text;
+
             if (confirmCode == null)
             {
                 MessageBox.Show("Вы не запрашивали код. Сначала запросите код подтверждения.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(TxtCode.Text))
+            if (string.IsNullOrWhiteSpace(code))
             {
                 MessageBox.Show("Введите код подтверждения", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ErrEmail.SetError(TxtCode, "Введите код подтверждения");
                 return;
             }
 
-            if (!int.TryParse(TxtCode.Text, out int enteredCode))
+            if (!int.TryParse(code, out int enteredCode))
             {
                 MessageBox.Show("Код подтверждения должен быть числом.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ErrEmail.SetError(TxtCode, "Код подтверждения должен быть числом");
@@ -290,7 +292,7 @@ namespace Diplom
         private void SendEmailCode(int id, string email)
         {
             var message = new MimeMessage();
-            message.From.Add(new MailboxAddress("Система учёта обращений в тех. поддержку", "dennyharmless@gmail.com"));
+            message.From.Add(new MailboxAddress("Система учёта обращений в тех. поддержку", Properties.Settings.Default.SmtpEmail));
             message.To.Add(new MailboxAddress("Пользователь №" + id, email));
             message.Subject = "Восстановление пароля";
 
@@ -470,7 +472,7 @@ namespace Diplom
                 try
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@password", PasswordHash.GetHashedPassword(password));
+                    cmd.Parameters.AddWithValue("@password", Classes.HashHelper.GetHashedValue(password));
                     cmd.Parameters.AddWithValue("@id", id);
                     Connection.Open();
                     if (cmd.ExecuteNonQuery() > 0)

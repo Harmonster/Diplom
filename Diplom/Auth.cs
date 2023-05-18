@@ -74,7 +74,7 @@ namespace Diplom
             //tb_password.Text = "1234567";
             TxtLogin.Text = "petrov@hotmail.com";
             TxtPassword.Text = "Qwerty1234";
-            Clipboard.SetText(PasswordHash.GetHashedPassword(TxtPassword.Text));
+            //Clipboard.SetText(PasswordHash.GetHashedPassword(TxtPassword.Text));
         }
 
         private void Auth_FormClosing(object sender, FormClosingEventArgs e)

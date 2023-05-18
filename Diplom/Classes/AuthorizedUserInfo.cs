@@ -28,7 +28,7 @@ namespace Diplom.Classes
                     cmd.CommandType = CommandType.StoredProcedure;
                     da.SelectCommand = cmd;
                     cmd.Parameters.AddWithValue("@u_login", TbxLogin.Text);
-                    cmd.Parameters.AddWithValue("@u_password", PasswordHash.GetHashedPassword(TbxPassword.Text));
+                    cmd.Parameters.AddWithValue("@u_password", Classes.HashHelper.GetHashedValue(TbxPassword.Text));
                     da.Fill(dt);
                     if (dt.Rows.Count == 1)
                     {

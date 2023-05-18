@@ -8,6 +8,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MailKit.Net.Smtp;
+using MailKit.Security;
+using MimeKit;
 
 namespace Diplom
 {
@@ -19,6 +22,7 @@ namespace Diplom
         private string initialEmail;
         private string initialRole;
 
+        private Random random = new Random();
 
 
         public Operators()
@@ -110,7 +114,49 @@ namespace Diplom
             }
         }
 
-        private void UpdateOperatorInfo(int id)
+        //private void UpdateOperatorInfo(int id)
+        //{
+        //    using (MySqlConnection Connection = new MySqlConnection(Properties.Settings.Default.DBConnectionString))
+        //    {
+        //        MySqlCommand cmd = new MySqlCommand("UpdateOperatorInfo", Connection);
+
+        //        try
+        //        {
+        //            cmd.CommandType = CommandType.StoredProcedure;
+        //            cmd.Parameters.AddWithValue("@u_id", id);
+        //            cmd.Parameters.AddWithValue("@u_surname", TxtSurname.Text);
+        //            cmd.Parameters.AddWithValue("@u_name", TxtName.Text);
+        //            cmd.Parameters.AddWithValue("@u_patron", TxtPatron.Text);
+        //            cmd.Parameters.AddWithValue("@u_shortname", $"{TxtSurname.Text} {TxtName.Text[0]}.{TxtPatron.Text[0]}.");
+        //            cmd.Parameters.AddWithValue("@u_email", TxtEmail.Text);
+        //            cmd.Parameters.AddWithValue("@u_role", CbRole.SelectedItem.ToString());
+        //            Connection.Open();
+        //            if (cmd.ExecuteNonQuery() > 0)
+        //            {
+        //                MessageBox.Show("Данные успешно изменены.", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+        //                initialSurname = TxtSurname.Text;
+        //                initialName = TxtName.Text;
+        //                initialPatron = TxtPatron.Text;
+        //                initialEmail = TxtEmail.Text;
+        //                initialRole = CbRole.SelectedItem.ToString();
+
+        //                Classes.Database.GetTableContent(CbSearchOperators, "GetOperatorList", "operators", "ФИО", "№");
+        //            }
+        //        }
+        //        catch (Exception)
+        //        {
+        //            throw;
+        //        }
+        //        finally
+        //        {
+        //            cmd.Dispose();
+        //            Connection.Close();
+        //        }
+        //    }
+        //}
+
+        private void UpdateOperator(int id, string surname, string name, string patron, string email, string role)
         {
             using (MySqlConnection Connection = new MySqlConnection(Properties.Settings.Default.DBConnectionString))
             {
@@ -120,23 +166,22 @@ namespace Diplom
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@u_id", id);
-                    cmd.Parameters.AddWithValue("@u_surname", TxtSurname.Text);
-                    cmd.Parameters.AddWithValue("@u_name", TxtName.Text);
-                    cmd.Parameters.AddWithValue("@u_patron", TxtPatron.Text);
-                    cmd.Parameters.AddWithValue("@u_shortname", $"{TxtSurname.Text} {TxtName.Text[0]}.{TxtPatron.Text[0]}.");
-                    cmd.Parameters.AddWithValue("@u_email", TxtEmail.Text);
-                    cmd.Parameters.AddWithValue("@u_role", CbRole.SelectedItem.ToString());
+                    cmd.Parameters.AddWithValue("@u_surname", surname);
+                    cmd.Parameters.AddWithValue("@u_name", name);
+                    cmd.Parameters.AddWithValue("@u_patron", patron);
+                    cmd.Parameters.AddWithValue("@u_shortname", $"{surname} {name[0]}.{patron[0]}.");
+                    cmd.Parameters.AddWithValue("@u_email", email);
+                    cmd.Parameters.AddWithValue("@u_role", role);
                     Connection.Open();
                     if (cmd.ExecuteNonQuery() > 0)
                     {
                         MessageBox.Show("Данные успешно изменены.", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                        initialSurname = TxtSurname.Text;
-                        initialName = TxtName.Text;
-                        initialPatron = TxtPatron.Text;
-                        initialEmail = TxtEmail.Text;
-                        initialRole = CbRole.SelectedItem.ToString();
-
+                        initialSurname = surname;
+                        initialName = name;
+                        initialPatron = patron;
+                        initialEmail = email;
+                        initialRole = role;
                         Classes.Database.GetTableContent(CbSearchOperators, "GetOperatorList", "operators", "ФИО", "№");
                     }
                 }
@@ -152,26 +197,28 @@ namespace Diplom
             }
         }
 
-        private void CreateOperator()
+        private void AddOperator(string surname, string name, string patron, string email, string role)
         {
             using (MySqlConnection Connection = new MySqlConnection(Properties.Settings.Default.DBConnectionString))
             {
                 MySqlCommand cmd = new MySqlCommand("CreateOperator", Connection);
+                string password = Classes.PasswordGenerator.GeneratePassword(6);
 
                 try
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@u_surname", TxtSurname.Text);
-                    cmd.Parameters.AddWithValue("@u_name", TxtName.Text);
-                    cmd.Parameters.AddWithValue("@u_patron", TxtPatron.Text);
-                    cmd.Parameters.AddWithValue("@u_shortname", $"{TxtSurname.Text} {TxtName.Text[0]}.{TxtPatron.Text[0]}.");
-                    cmd.Parameters.AddWithValue("@u_email", TxtEmail.Text);
-                    cmd.Parameters.AddWithValue("@u_role", CbRole.SelectedItem.ToString());
+                    cmd.Parameters.AddWithValue("@u_surname", surname);
+                    cmd.Parameters.AddWithValue("@u_name", name);
+                    cmd.Parameters.AddWithValue("@u_patron", patron);
+                    cmd.Parameters.AddWithValue("@u_shortname", $"{surname} {name[0]}.{patron[0]}.");
+                    cmd.Parameters.AddWithValue("@u_email", email);
+                    cmd.Parameters.AddWithValue("@u_password", Classes.HashHelper.GetHashedValue(password));
+                    cmd.Parameters.AddWithValue("@u_role", role);
                     Connection.Open();
                     if (cmd.ExecuteNonQuery() > 0)
                     {
                         MessageBox.Show("Данные успешно добавлены.", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                        SendEmailPassword(email, password);
                         Classes.Database.GetTableContent(CbSearchOperators, "GetOperatorList", "operators", "ФИО", "№");
                     }
                 }
@@ -194,7 +241,7 @@ namespace Diplom
         {
             using (MySqlConnection Connection = new MySqlConnection(Properties.Settings.Default.DBConnectionString))
             {
-                MySqlCommand cmd = new MySqlCommand("DeleteStaff", Connection);
+                MySqlCommand cmd = new MySqlCommand("DeleteOperator", Connection);
 
                 try
                 {
@@ -221,13 +268,24 @@ namespace Diplom
 
         private void BtnUpdate_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(TxtSurname.Text) || string.IsNullOrWhiteSpace(TxtName.Text) || string.IsNullOrWhiteSpace(TxtPatron.Text) || string.IsNullOrWhiteSpace(TxtEmail.Text) || string.IsNullOrWhiteSpace(CbRole.Text))
+            string surname = TxtSurname.Text;
+            string name = TxtName.Text;
+            string patron = TxtPatron.Text;
+            string email = TxtEmail.Text;
+            string role = CbRole.Text;
+
+            if (string.IsNullOrWhiteSpace(surname) || string.IsNullOrWhiteSpace(name) || string.IsNullOrWhiteSpace(patron) || string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(role))
             {
                 MessageBox.Show("Пожалуйста, заполните все поля.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            string email = TxtEmail.Text;
+            if (!Classes.Validations.IsAllLetters(surname) || !Classes.Validations.IsAllLetters(name) || !Classes.Validations.IsAllLetters(patron))
+            {
+                MessageBox.Show("Поля Фамилия, Имя, Отчество должны содержать только буквы");
+                return;
+            }
+
             (bool isEmailValid, string validationMessage) validationResult = Classes.Validations.ValidateEmail(email);
 
             if (!validationResult.isEmailValid)
@@ -238,12 +296,12 @@ namespace Diplom
 
             int id = GetSelectedOperatorId();
 
-            if (!string.Equals(TxtSurname.Text, initialSurname) || !string.Equals(TxtName.Text, initialName) || !string.Equals(TxtPatron.Text, initialPatron) || !string.Equals(TxtEmail.Text, initialEmail) || !string.Equals(CbRole.Text, initialRole))
+            if (!string.Equals(surname, initialSurname) || !string.Equals(name, initialName) || !string.Equals(patron, initialPatron) || !string.Equals(email, initialEmail) || !string.Equals(role, initialRole))
             {
                 DialogResult dr = MessageBox.Show("Вы действительно хотите изменить данные сотрудника " + CbSearchOperators.Text + "?", "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dr == DialogResult.Yes)
                 {
-                    UpdateOperatorInfo(id);
+                    UpdateOperator(id, surname, name, patron, email, role);
                 }
             }
             else
@@ -264,13 +322,18 @@ namespace Diplom
 
         private void BtnCreate_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(TxtSurname.Text) || string.IsNullOrWhiteSpace(TxtName.Text) || string.IsNullOrWhiteSpace(TxtPatron.Text) || string.IsNullOrWhiteSpace(TxtEmail.Text) || string.IsNullOrWhiteSpace(CbRole.Text))
+            string surname = TxtSurname.Text;
+            string name = TxtName.Text;
+            string patron = TxtPatron.Text;
+            string email = TxtEmail.Text;
+            string role = CbRole.Text;
+
+            if (string.IsNullOrWhiteSpace(surname) || string.IsNullOrWhiteSpace(name) || string.IsNullOrWhiteSpace(patron) || string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(role))
             {
                 MessageBox.Show("Пожалуйста, заполните все поля.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            string email = TxtEmail.Text;
             (bool isEmailValid, string validationMessage) validationResult = Classes.Validations.ValidateEmail(email);
 
             if (!validationResult.isEmailValid)
@@ -279,7 +342,34 @@ namespace Diplom
                 return;
             }
 
-            CreateOperator();
+            AddOperator(surname, name, patron, email, role);
+        }
+
+        private void SendEmailPassword(string email, string password)
+        {
+            var message = new MimeMessage();
+            message.From.Add(new MailboxAddress("Система учёта обращений в тех. поддержку", Properties.Settings.Default.SmtpEmail));
+            message.To.Add(new MailboxAddress("Оператор", email));
+            message.Subject = "Регистрация учетной записи оператора";
+
+            var builder = new StringBuilder();
+            builder.AppendLine("Данный почтовый адрес был использован для регистрации в системе учёта обращений тех. поддержку.");
+            builder.AppendLine("Пожалуйста, используйте присланный пароль для первого входа в программу. Далее система предложит вам создать новый пароль.");
+            builder.AppendLine("Пароль: " + password);
+            builder.AppendLine("Если вы уверены что это письмо пришло к Вам по ошибке, пожалуйста проигнорируйте его.");
+            message.Body = new TextPart("plain")
+            {
+                Text = builder.ToString()
+            };
+
+            using (var client = new SmtpClient())
+            {
+                client.Connect(Properties.Settings.Default.SmtpServer, 587, SecureSocketOptions.StartTls);
+                client.Authenticate(Properties.Settings.Default.SmtpEmail, Properties.Settings.Default.SmtpPassword);
+                client.Send(message);
+                client.Disconnect(true);
+            }
         }
     }
 }
+

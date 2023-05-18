@@ -20,13 +20,17 @@ namespace Diplom
 
         private void BtnSend_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(TxtSecret.Text))
+            string secret = TxtSecret.Text;
+            string password = TxtPassword.Text;
+            string passwordRepeat = TxtPasswordRepeat.Text;
+
+            if (string.IsNullOrWhiteSpace(secret))
             {
                 MessageBox.Show("Введите секретное слово", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            (bool isPasswordValid, string validationMessage) validationResult = Classes.Validations.ValidatePassword(TxtPassword.Text);
+            (bool isPasswordValid, string validationMessage) validationResult = Classes.Validations.ValidatePassword(password);
 
             if (!validationResult.isPasswordValid)
             {
@@ -34,22 +38,22 @@ namespace Diplom
                 return;
             }
 
-            if (string.IsNullOrEmpty(TxtPasswordRepeat.Text))
+            if (string.IsNullOrEmpty(passwordRepeat))
             {
                 MessageBox.Show("Повторите новый пароль. Перепроверьте данные.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            if(!string.Equals(TxtPassword.Text, TxtPasswordRepeat.Text))
+            if(!string.Equals(password, passwordRepeat))
             {
                 MessageBox.Show("Указанные пароли не совпадают. Перепроверьте данные.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            UpdatePassword();
+            UpdatePassword(password, secret);
         }
 
-        private void UpdatePassword()
+        private void UpdatePassword(string password, string secret)
         {
             using (MySqlConnection Connection = new MySqlConnection(Properties.Settings.Default.DBConnectionString))
             {
@@ -58,8 +62,8 @@ namespace Diplom
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@u_id", Classes.AuthorizedUserInfo.UserId);
-                    cmd.Parameters.AddWithValue("@u_password", PasswordHash.GetHashedPassword(TxtPassword.Text));
-                    cmd.Parameters.AddWithValue("@u_secret", PasswordHash.GetHashedPassword(TxtSecret.Text));
+                    cmd.Parameters.AddWithValue("@u_password", Classes.HashHelper.GetHashedValue(password));
+                    cmd.Parameters.AddWithValue("@u_secret", Classes.HashHelper.GetHashedValue(secret));
                     Connection.Open();
                     if (cmd.ExecuteNonQuery() > 0)
                     {

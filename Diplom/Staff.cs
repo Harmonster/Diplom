@@ -96,93 +96,84 @@ namespace Diplom
             }
         }
 
-        private void btn_update_Click(object sender, EventArgs e)
+        private void UpdateStaff()
         {
-            if (string.IsNullOrWhiteSpace(TxtSurname.Text) || string.IsNullOrWhiteSpace(TxtName.Text) || string.IsNullOrWhiteSpace(TxtPatron.Text) || string.IsNullOrWhiteSpace(TxtEmail.Text) || string.IsNullOrWhiteSpace(TxtPhone.Text))
+            using (MySqlConnection Connection = new MySqlConnection(Properties.Settings.Default.DBConnectionString))
             {
-                MessageBox.Show("Пожалуйста, заполните все поля.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            string email = TxtEmail.Text;
-            (bool isEmailValid, string validationMessage) validationResult = Classes.Validations.ValidateEmail(email);
-
-            if (!validationResult.isEmailValid)
-            {
-                MessageBox.Show(validationResult.validationMessage, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            if (TxtSurname.Text != initialSurname || TxtName.Text != initialName || TxtPatron.Text != initialPatron || TxtEmail.Text != initialEmail || TxtPhone.Text != initialPhone)
-            {
-                DialogResult dr = MessageBox.Show("Вы действительно хотите изменить данные сотрудника " + CbStaff.Text + "?", "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (dr == DialogResult.Yes)
+                MySqlCommand cmd = new MySqlCommand("UpdateStaffDetails", Connection);
+                int converter;
+                bool parseOK = Int32.TryParse(CbStaff.SelectedValue.ToString(), out converter);
+                try
                 {
-                    using (MySqlConnection Connection = new MySqlConnection(Properties.Settings.Default.DBConnectionString))
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@u_id", converter);
+                    cmd.Parameters.AddWithValue("@u_surname", TxtSurname.Text);
+                    cmd.Parameters.AddWithValue("@u_name", TxtName.Text);
+                    cmd.Parameters.AddWithValue("@u_patron", TxtPatron.Text);
+                    cmd.Parameters.AddWithValue("@u_shortname", $"{TxtSurname.Text} {TxtName.Text[0]}.{TxtPatron.Text[0]}.");
+                    cmd.Parameters.AddWithValue("@u_email", TxtEmail.Text);
+                    cmd.Parameters.AddWithValue("@u_phone", TxtPhone.Text);
+                    Connection.Open();
+                    if (cmd.ExecuteNonQuery() > 0)
                     {
-                        MySqlCommand cmd = new MySqlCommand("UpdateStaffDetails", Connection);
-                        int converter;
-                        bool parseOK = Int32.TryParse(CbStaff.SelectedValue.ToString(), out converter);
-                        try
-                        {
-                            cmd.CommandType = CommandType.StoredProcedure;
-                            cmd.Parameters.AddWithValue("@u_id", converter);
-                            cmd.Parameters.AddWithValue("@u_surname", TxtSurname.Text);
-                            cmd.Parameters.AddWithValue("@u_name", TxtName.Text);
-                            cmd.Parameters.AddWithValue("@u_patron", TxtPatron.Text);
-                            cmd.Parameters.AddWithValue("@u_shortname", $"{TxtSurname.Text} {TxtName.Text[0]}.{TxtPatron.Text[0]}.");
-                            cmd.Parameters.AddWithValue("@u_email", TxtEmail.Text);
-                            cmd.Parameters.AddWithValue("@u_phone", TxtPhone.Text);
-                            Connection.Open();
-                            if (cmd.ExecuteNonQuery() > 0)
-                            {
-                                MessageBox.Show("Данные успешно изменены.", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Данные успешно изменены.", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                                initialSurname = TxtSurname.Text;
-                                initialName = TxtName.Text;
-                                initialPatron = TxtPatron.Text;
-                                initialEmail = TxtEmail.Text;
-                                initialPhone = TxtPhone.Text;
+                        initialSurname = TxtSurname.Text;
+                        initialName = TxtName.Text;
+                        initialPatron = TxtPatron.Text;
+                        initialEmail = TxtEmail.Text;
+                        initialPhone = TxtPhone.Text;
 
-                                Classes.Database.GetTableContent(CbStaff, "GetStaffList", "staff", "ФИО", "№");
-                            }
-                        }
-                        catch (Exception)
-                        {
-                            throw;
-                        }
-                        finally
-                        {
-                            cmd.Dispose();
-                            Connection.Close();
-                        }
+                        Classes.Database.GetTableContent(CbStaff, "GetStaffList", "staff", "ФИО", "№");
                     }
                 }
-            }
-            else
-            {
-                MessageBox.Show("Данные не изменились. Обновление не требуется.", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
+                catch (Exception)
+                {
+                    throw;
+                }
+                finally
+                {
+                    cmd.Dispose();
+                    Connection.Close();
+                }
             }
         }
 
-        private void btn_create_Click(object sender, EventArgs e)
+        private void DeleteStaff()
         {
-            if (string.IsNullOrWhiteSpace(TxtSurname.Text) || string.IsNullOrWhiteSpace(TxtName.Text) || string.IsNullOrWhiteSpace(TxtPatron.Text) || string.IsNullOrWhiteSpace(TxtEmail.Text) || string.IsNullOrWhiteSpace(TxtPhone.Text))
+            using (MySqlConnection Connection = new MySqlConnection(Properties.Settings.Default.DBConnectionString))
             {
-                MessageBox.Show("Пожалуйста, заполните все поля.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                MySqlCommand cmd = new MySqlCommand("DeleteStaff", Connection);
+                int converter;
+                bool parseOK = Int32.TryParse(CbStaff.SelectedValue.ToString(), out converter);
+                try
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@u_id", converter);
+                    Connection.Open();
+                    if (cmd.ExecuteNonQuery() > 0)
+                    {
+                        MessageBox.Show("Данные сотрудника успешно удалены.", "Успех", MessageBoxButtons.OK);
+                        Classes.Database.GetTableContent(CbStaff, "GetStaffList", "staff", "ФИО", "№");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    if (ex is MySqlException mysqlEx && mysqlEx.Number == (int)MySqlErrorCode.RowIsReferenced2)
+                    {
+                        MessageBox.Show("Вы не можете удалить пользователя который оставлял заявки. Сначала нужно удалить их.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                finally
+                {
+                    cmd.Dispose();
+                    Connection.Close();
+                }
             }
+        }
 
-            string email = TxtEmail.Text;
-            (bool isEmailValid, string validationMessage) validationResult = Classes.Validations.ValidateEmail(email);
-
-            if (!validationResult.isEmailValid)
-            {
-                MessageBox.Show(validationResult.validationMessage, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
+        private void CreateStaff()
+        {
             using (MySqlConnection Connection = new MySqlConnection(Properties.Settings.Default.DBConnectionString))
             {
                 MySqlCommand cmd = new MySqlCommand("CreateStaff", Connection);
@@ -215,7 +206,58 @@ namespace Diplom
                     Connection.Close();
                 }
             }
+        }
+        
+        private void btn_update_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(TxtSurname.Text) || string.IsNullOrWhiteSpace(TxtName.Text) || string.IsNullOrWhiteSpace(TxtPatron.Text) || string.IsNullOrWhiteSpace(TxtEmail.Text) || string.IsNullOrWhiteSpace(TxtPhone.Text))
+            {
+                MessageBox.Show("Пожалуйста, заполните все поля.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
+            string email = TxtEmail.Text;
+            (bool isEmailValid, string validationMessage) validationResult = Classes.Validations.ValidateEmail(email);
+
+            if (!validationResult.isEmailValid)
+            {
+                MessageBox.Show(validationResult.validationMessage, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (TxtSurname.Text != initialSurname || TxtName.Text != initialName || TxtPatron.Text != initialPatron || TxtEmail.Text != initialEmail || TxtPhone.Text != initialPhone)
+            {
+                DialogResult dr = MessageBox.Show("Вы действительно хотите изменить данные сотрудника " + CbStaff.Text + "?", "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dr == DialogResult.Yes)
+                {
+                    UpdateStaff();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Данные не изменились. Обновление не требуется.", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+        }
+
+        private void btn_create_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(TxtSurname.Text) || string.IsNullOrWhiteSpace(TxtName.Text) || string.IsNullOrWhiteSpace(TxtPatron.Text) || string.IsNullOrWhiteSpace(TxtEmail.Text) || string.IsNullOrWhiteSpace(TxtPhone.Text))
+            {
+                MessageBox.Show("Пожалуйста, заполните все поля.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            string email = TxtEmail.Text;
+            (bool isEmailValid, string validationMessage) validationResult = Classes.Validations.ValidateEmail(email);
+
+            if (!validationResult.isEmailValid)
+            {
+                MessageBox.Show(validationResult.validationMessage, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            CreateStaff();
         }
 
         private void btn_delete_Click(object sender, EventArgs e)
@@ -229,35 +271,7 @@ namespace Diplom
             DialogResult dr = MessageBox.Show("Вы действительно хотите удалить запись о сотруднике " + CbStaff.Text + " ?", "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dr == DialogResult.Yes)
             {
-                using (MySqlConnection Connection = new MySqlConnection(Properties.Settings.Default.DBConnectionString))
-                {
-                    MySqlCommand cmd = new MySqlCommand("DeleteStaff", Connection);
-                    int converter;
-                    bool parseOK = Int32.TryParse(CbStaff.SelectedValue.ToString(), out converter);
-                    try
-                    {
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("@u_id", converter);
-                        Connection.Open();
-                        if (cmd.ExecuteNonQuery() > 0)
-                        {
-                            MessageBox.Show("Данные сотрудника успешно удалены.", "Успех", MessageBoxButtons.OK);
-                            Classes.Database.GetTableContent(CbStaff, "GetStaffList", "staff", "ФИО", "№");
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        if (ex is MySqlException mysqlEx && mysqlEx.Number == (int)MySqlErrorCode.RowIsReferenced2)
-                        {
-                            MessageBox.Show("Вы не можете удалить пользователя который оставлял заявки. Сначала нужно удалить их.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
-                    finally
-                    {
-                        cmd.Dispose();
-                        Connection.Close();
-                    }
-                }
+                DeleteStaff();
             } 
             else if (dr == DialogResult.No)
             {
