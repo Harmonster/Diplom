@@ -101,6 +101,36 @@ namespace Diplom
             }
         }
 
+        private void btn_solution_Click(object sender, EventArgs e)
+        {
+            using (MySqlConnection Connection = new MySqlConnection(Properties.Settings.Default.DBConnectionString))
+            {
+                MySqlCommand cmd = new MySqlCommand("CreateSolution", Connection);
+                try
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@u_id", id);
+                    cmd.Parameters.AddWithValue("@u_handler", Classes.AuthorizedUserInfo.UserId);
+                    cmd.Parameters.AddWithValue("@u_solution", TxtSolution.Text);
+
+                    Connection.Open();
+                    if (cmd.ExecuteNonQuery() > 0)
+                    {
+                        MessageBox.Show("Ответ успешно зарегистрирован.");
+                    }
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+                finally
+                {
+                    cmd.Dispose();
+                    Connection.Close();
+                }
+            }
+        }
+
         private void UpdateTicketStatusById()
         {
             using (MySqlConnection Connection = new MySqlConnection(Properties.Settings.Default.DBConnectionString))

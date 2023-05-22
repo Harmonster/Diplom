@@ -49,13 +49,16 @@ namespace Diplom
             this.LbEmail = new System.Windows.Forms.Label();
             this.TxtEmail = new System.Windows.Forms.TextBox();
             this.CbSearchOperators = new System.Windows.Forms.ComboBox();
+            this.dgv_solutions = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_solutions)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.panel1.Controls.Add(this.dgv_solutions);
             this.panel1.Controls.Add(this.BtnClear);
             this.panel1.Controls.Add(this.BtnDelete);
             this.panel1.Controls.Add(this.BtnUpdate);
@@ -76,12 +79,12 @@ namespace Diplom
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(440, 249);
+            this.panel1.Size = new System.Drawing.Size(793, 469);
             this.panel1.TabIndex = 0;
             // 
             // BtnClear
             // 
-            this.BtnClear.Location = new System.Drawing.Point(320, 196);
+            this.BtnClear.Location = new System.Drawing.Point(114, 348);
             this.BtnClear.Name = "BtnClear";
             this.BtnClear.Size = new System.Drawing.Size(94, 38);
             this.BtnClear.TabIndex = 16;
@@ -91,7 +94,7 @@ namespace Diplom
             // 
             // BtnDelete
             // 
-            this.BtnDelete.Location = new System.Drawing.Point(220, 196);
+            this.BtnDelete.Location = new System.Drawing.Point(15, 348);
             this.BtnDelete.Name = "BtnDelete";
             this.BtnDelete.Size = new System.Drawing.Size(94, 38);
             this.BtnDelete.TabIndex = 15;
@@ -101,7 +104,7 @@ namespace Diplom
             // 
             // BtnUpdate
             // 
-            this.BtnUpdate.Location = new System.Drawing.Point(120, 196);
+            this.BtnUpdate.Location = new System.Drawing.Point(114, 392);
             this.BtnUpdate.Name = "BtnUpdate";
             this.BtnUpdate.Size = new System.Drawing.Size(94, 38);
             this.BtnUpdate.TabIndex = 14;
@@ -116,7 +119,7 @@ namespace Diplom
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(440, 43);
+            this.panel2.Size = new System.Drawing.Size(793, 43);
             this.panel2.TabIndex = 13;
             // 
             // label7
@@ -130,7 +133,7 @@ namespace Diplom
             // 
             // BtnCreate
             // 
-            this.BtnCreate.Location = new System.Drawing.Point(20, 196);
+            this.BtnCreate.Location = new System.Drawing.Point(15, 392);
             this.BtnCreate.Name = "BtnCreate";
             this.BtnCreate.Size = new System.Drawing.Size(94, 38);
             this.BtnCreate.TabIndex = 12;
@@ -174,7 +177,7 @@ namespace Diplom
             // 
             this.LbPatron.AutoSize = true;
             this.LbPatron.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.LbPatron.Location = new System.Drawing.Point(225, 136);
+            this.LbPatron.Location = new System.Drawing.Point(15, 275);
             this.LbPatron.Name = "LbPatron";
             this.LbPatron.Size = new System.Drawing.Size(63, 16);
             this.LbPatron.TabIndex = 8;
@@ -183,7 +186,7 @@ namespace Diplom
             // TxtPatron
             // 
             this.TxtPatron.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.TxtPatron.Location = new System.Drawing.Point(225, 155);
+            this.TxtPatron.Location = new System.Drawing.Point(15, 294);
             this.TxtPatron.MaxLength = 50;
             this.TxtPatron.Name = "TxtPatron";
             this.TxtPatron.Size = new System.Drawing.Size(193, 23);
@@ -193,7 +196,7 @@ namespace Diplom
             // 
             this.LbName.AutoSize = true;
             this.LbName.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.LbName.Location = new System.Drawing.Point(225, 91);
+            this.LbName.Location = new System.Drawing.Point(15, 230);
             this.LbName.Name = "LbName";
             this.LbName.Size = new System.Drawing.Size(31, 16);
             this.LbName.TabIndex = 6;
@@ -202,7 +205,7 @@ namespace Diplom
             // TxtName
             // 
             this.TxtName.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.TxtName.Location = new System.Drawing.Point(225, 110);
+            this.TxtName.Location = new System.Drawing.Point(15, 249);
             this.TxtName.MaxLength = 50;
             this.TxtName.Name = "TxtName";
             this.TxtName.Size = new System.Drawing.Size(193, 23);
@@ -212,7 +215,7 @@ namespace Diplom
             // 
             this.LbSurname.AutoSize = true;
             this.LbSurname.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.LbSurname.Location = new System.Drawing.Point(222, 46);
+            this.LbSurname.Location = new System.Drawing.Point(12, 185);
             this.LbSurname.Name = "LbSurname";
             this.LbSurname.Size = new System.Drawing.Size(61, 16);
             this.LbSurname.TabIndex = 4;
@@ -221,7 +224,7 @@ namespace Diplom
             // TxtSurname
             // 
             this.TxtSurname.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.TxtSurname.Location = new System.Drawing.Point(225, 65);
+            this.TxtSurname.Location = new System.Drawing.Point(15, 204);
             this.TxtSurname.MaxLength = 50;
             this.TxtSurname.Name = "TxtSurname";
             this.TxtSurname.Size = new System.Drawing.Size(193, 23);
@@ -257,11 +260,26 @@ namespace Diplom
             this.CbSearchOperators.TabIndex = 0;
             this.CbSearchOperators.SelectedIndexChanged += new System.EventHandler(this.CbSearchOperators_SelectedIndexChanged);
             // 
+            // dgv_solutions
+            // 
+            this.dgv_solutions.AllowUserToAddRows = false;
+            this.dgv_solutions.AllowUserToDeleteRows = false;
+            this.dgv_solutions.AllowUserToOrderColumns = true;
+            this.dgv_solutions.BackgroundColor = System.Drawing.Color.White;
+            this.dgv_solutions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_solutions.Location = new System.Drawing.Point(227, 65);
+            this.dgv_solutions.Name = "dgv_solutions";
+            this.dgv_solutions.ReadOnly = true;
+            this.dgv_solutions.RowHeadersVisible = false;
+            this.dgv_solutions.Size = new System.Drawing.Size(554, 365);
+            this.dgv_solutions.TabIndex = 17;
+            this.dgv_solutions.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgv_solutions_CellFormatting);
+            // 
             // Operators
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(440, 249);
+            this.ClientSize = new System.Drawing.Size(793, 469);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Operators";
@@ -271,6 +289,7 @@ namespace Diplom
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_solutions)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -296,5 +315,6 @@ namespace Diplom
         private System.Windows.Forms.Button BtnCreate;
         private System.Windows.Forms.Button BtnDelete;
         private System.Windows.Forms.Button BtnClear;
+        private System.Windows.Forms.DataGridView dgv_solutions;
     }
 }

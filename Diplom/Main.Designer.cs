@@ -29,6 +29,7 @@ namespace Diplom
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.pl_background = new System.Windows.Forms.Panel();
             this.pl_workplace = new System.Windows.Forms.Panel();
@@ -55,6 +56,7 @@ namespace Diplom
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pl_menu_header = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.dbUpdateTimer = new System.Windows.Forms.Timer(this.components);
             this.pl_background.SuspendLayout();
             this.pl_leftMenu.SuspendLayout();
             this.pl_menu_operators.SuspendLayout();
@@ -265,7 +267,6 @@ namespace Diplom
             // btn_settings
             // 
             this.btn_settings.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btn_settings.Enabled = false;
             this.btn_settings.FlatAppearance.BorderSize = 0;
             this.btn_settings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_settings.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -279,7 +280,6 @@ namespace Diplom
             this.btn_settings.Text = "Настройки";
             this.btn_settings.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_settings.UseVisualStyleBackColor = true;
-            this.btn_settings.Visible = false;
             this.btn_settings.Click += new System.EventHandler(this.btn_settings_Click);
             // 
             // pl_menu_spacer
@@ -389,6 +389,10 @@ namespace Diplom
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
             // 
+            // dbUpdateTimer
+            // 
+            this.dbUpdateTimer.Tick += new System.EventHandler(this.dbUpdateTimer_Tick);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -443,6 +447,7 @@ namespace Diplom
         private System.Windows.Forms.Panel pl_menu_operators;
         private System.Windows.Forms.Button btn_operators;
         private System.Windows.Forms.Panel pl_menu_operators_highlight;
+        private System.Windows.Forms.Timer dbUpdateTimer;
     }
 }
 

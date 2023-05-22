@@ -47,6 +47,7 @@ namespace Diplom
         {
             int id = GetSelectedOperatorId();
             GetOperatorDetails(id);
+            GetOperatorSolutions(id);
         }
 
         private void GetOperatorDetails(int id)
@@ -114,47 +115,6 @@ namespace Diplom
             }
         }
 
-        //private void UpdateOperatorInfo(int id)
-        //{
-        //    using (MySqlConnection Connection = new MySqlConnection(Properties.Settings.Default.DBConnectionString))
-        //    {
-        //        MySqlCommand cmd = new MySqlCommand("UpdateOperatorInfo", Connection);
-
-        //        try
-        //        {
-        //            cmd.CommandType = CommandType.StoredProcedure;
-        //            cmd.Parameters.AddWithValue("@u_id", id);
-        //            cmd.Parameters.AddWithValue("@u_surname", TxtSurname.Text);
-        //            cmd.Parameters.AddWithValue("@u_name", TxtName.Text);
-        //            cmd.Parameters.AddWithValue("@u_patron", TxtPatron.Text);
-        //            cmd.Parameters.AddWithValue("@u_shortname", $"{TxtSurname.Text} {TxtName.Text[0]}.{TxtPatron.Text[0]}.");
-        //            cmd.Parameters.AddWithValue("@u_email", TxtEmail.Text);
-        //            cmd.Parameters.AddWithValue("@u_role", CbRole.SelectedItem.ToString());
-        //            Connection.Open();
-        //            if (cmd.ExecuteNonQuery() > 0)
-        //            {
-        //                MessageBox.Show("Данные успешно изменены.", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-        //                initialSurname = TxtSurname.Text;
-        //                initialName = TxtName.Text;
-        //                initialPatron = TxtPatron.Text;
-        //                initialEmail = TxtEmail.Text;
-        //                initialRole = CbRole.SelectedItem.ToString();
-
-        //                Classes.Database.GetTableContent(CbSearchOperators, "GetOperatorList", "operators", "ФИО", "№");
-        //            }
-        //        }
-        //        catch (Exception)
-        //        {
-        //            throw;
-        //        }
-        //        finally
-        //        {
-        //            cmd.Dispose();
-        //            Connection.Close();
-        //        }
-        //    }
-        //}
 
         private void UpdateOperator(int id, string surname, string name, string patron, string email, string role)
         {
@@ -228,6 +188,38 @@ namespace Diplom
                     {
                         MessageBox.Show("Оператор с такими данными уже зарегистрирован. Введите другие данные.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
+                }
+                finally
+                {
+                    cmd.Dispose();
+                    Connection.Close();
+                }
+            }
+        }
+
+        private void GetOperatorSolutions(int id)
+        {
+            using (MySqlConnection Connection = new MySqlConnection(Properties.Settings.Default.DBConnectionString))
+            {
+                MySqlCommand cmd = new MySqlCommand("GetSolutionsByHandlerId", Connection);
+                MySqlDataAdapter da = new MySqlDataAdapter();
+                DataTable dt = new DataTable();
+
+                try
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@u_id", id);
+                    da.SelectCommand = cmd;
+                    Connection.Open();
+                    da.Fill(dt);
+                    dgv_solutions.DataSource = dt;
+
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    throw;
                 }
                 finally
                 {
@@ -318,6 +310,7 @@ namespace Diplom
             TxtPatron.Clear();
             TxtEmail.Clear();
             CbRole.SelectedIndex = 0;
+            dgv_solutions.DataSource = null;
         }
 
         private void BtnCreate_Click(object sender, EventArgs e)
@@ -368,6 +361,29 @@ namespace Diplom
                 client.Authenticate(Properties.Settings.Default.SmtpEmail, Properties.Settings.Default.SmtpPassword);
                 client.Send(message);
                 client.Disconnect(true);
+            }
+        }
+
+        private void dgv_solutions_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex == 0)
+            {
+                dgv_solutions.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            }
+
+            if (e.ColumnIndex == 1)
+            {
+                dgv_solutions.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            }
+
+            if (e.ColumnIndex == 2)
+            {
+                dgv_solutions.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            }
+
+            if (e.ColumnIndex == 3)
+            {
+                dgv_solutions.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
         }
     }

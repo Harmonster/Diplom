@@ -24,7 +24,6 @@ namespace Diplom
 
         private int? confirmCode = null; // Код восстановления
         private bool codeButtonLocked = false;
-        private bool formUnlocked = true;
 
         // Восстановление через секретное слово
         private Label LblSecret;

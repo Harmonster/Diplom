@@ -18,6 +18,8 @@ namespace Diplom
         public Main()
         {
             InitializeComponent();
+
+            dbUpdateTimer.Interval = Properties.Settings.Default.DBUpdateTimer * 60 * 1000;
         }
 
         private void OpenChildForm(Form childForm, object btnSender)
@@ -41,16 +43,21 @@ namespace Diplom
         private void Main_Load(object sender, EventArgs e)
         {
             lb_currUser.Text = Classes.AuthorizedUserInfo.UserName;
+            dbUpdateTimer.Start();
             OpenChildForm(new Tickets(), sender);
+
 
             if (Classes.AuthorizedUserInfo.UserRole != "Администратор")
             {
                 pl_menu_operators.Hide();
+                btn_settings.Hide();
             }
         }
 
         private void Main_FormClosing(object sender, FormClosingEventArgs e)
         {
+            dbUpdateTimer.Stop();
+            dbUpdateTimer.Dispose();
             Application.Exit();
         }
 
@@ -80,6 +87,16 @@ namespace Diplom
         private void btn_operators_Click(object sender, EventArgs e)
         {
             OpenChildForm(new Operators(), sender);
+        }
+
+        private void dbUpdateTimer_Tick(object sender, EventArgs e)
+        {
+            DatabaseUpdate();
+        }
+
+        private void DatabaseUpdate()
+        {
+
         }
     }
 }

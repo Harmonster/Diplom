@@ -370,8 +370,6 @@ namespace Diplom
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView dgv_tickets;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
@@ -394,5 +392,6 @@ namespace Diplom
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.Button BtnSearchReset;
         private System.Windows.Forms.ToolStripLabel TslCurrentPage;
+        public System.Windows.Forms.DataGridView dgv_tickets;
     }
 }

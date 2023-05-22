@@ -192,7 +192,6 @@
     <None Include="Resources\Technical Support_28px.png" />
     <Content Include="Resources\icons8_service.ico" />
     <Content Include="TODO.txt" />
-    <Compile Include="Classes\ApplicationSettings.cs" />
     <Compile Include="Classes\AuthorizedUserInfo.cs" />
     <Compile Include="Classes\Database.cs" />
     <Compile Include="Classes\PasswordGenerator.cs" />

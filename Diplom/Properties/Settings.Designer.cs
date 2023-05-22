@@ -8,8 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
-
 namespace Diplom.Properties {
     
     
@@ -36,37 +34,100 @@ namespace Diplom.Properties {
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("smtp.gmail.com")]
         public string SmtpServer {
             get {
                 return ((string)(this["SmtpServer"]));
             }
+            set {
+                this["SmtpServer"] = value;
+            }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("dennyharmless@gmail.com")]
         public string SmtpEmail {
             get {
                 return ((string)(this["SmtpEmail"]));
             }
+            set {
+                this["SmtpEmail"] = value;
+            }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("vzvmepndhxgecqko")]
         public string SmtpPassword {
             get {
                 return ((string)(this["SmtpPassword"]));
             }
+            set {
+                this["SmtpPassword"] = value;
+            }
         }
-
-        public int TimerLeft { get; internal set; }
-        public int TimerNumber { get; internal set; }
-
-        public string Email { get; internal set; }
-        public int LastChoice { get; internal set; }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int TimerNumber {
+            get {
+                return ((int)(this["TimerNumber"]));
+            }
+            set {
+                this["TimerNumber"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int LastChoice {
+            get {
+                return ((int)(this["LastChoice"]));
+            }
+            set {
+                this["LastChoice"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int TimerLeft {
+            get {
+                return ((int)(this["TimerLeft"]));
+            }
+            set {
+                this["TimerLeft"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Email {
+            get {
+                return ((string)(this["Email"]));
+            }
+            set {
+                this["Email"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("5")]
+        public int DBUpdateTimer {
+            get {
+                return ((int)(this["DBUpdateTimer"]));
+            }
+            set {
+                this["DBUpdateTimer"] = value;
+            }
+        }
     }
 }

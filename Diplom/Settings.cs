@@ -18,26 +18,38 @@ namespace Diplom
             InitializeComponent();
         }
 
-        private void cb_colorTheme_SelectedIndexChanged(object sender, EventArgs e)
+        private void GetSettings()
         {
-            if (cb_colorTheme.SelectedItem.ToString() == "Светлая")
-            {
-                Classes.ApplicationSettings.cfg.SetValue("Appereance", "ColorTheme", "0");
-            }
-            else if (cb_colorTheme.SelectedItem.ToString() == "Тёмная")
-            {
-                Classes.ApplicationSettings.cfg.SetValue("Appereance", "ColorTheme", "1");
-            }
+            TxtSmtpServer.Text = Properties.Settings.Default.SmtpServer;
+            TxtSmtpAddress.Text = Properties.Settings.Default.SmtpEmail;
+            TxtSmtpPassword.Text = Properties.Settings.Default.SmtpPassword;
+        }
+
+        private void SaveSettings()
+        {
+            Properties.Settings.Default.SmtpServer = TxtSmtpServer.Text;
+            Properties.Settings.Default.SmtpEmail = TxtSmtpAddress.Text;
+            Properties.Settings.Default.SmtpPassword = TxtSmtpPassword.Text;
+            Properties.Settings.Default.Save();
         }
 
         private void btn_settingsSave_Click(object sender, EventArgs e)
         {
-            Classes.ApplicationSettings.cfg.Save();
+            DialogResult dr = MessageBox.Show("Вы уверены что хотите изменить настройки?", "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dr == DialogResult.Yes)
+            {
+                SaveSettings();
+            }
         }
 
         private void btn_close_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void Settings_Load(object sender, EventArgs e)
+        {
+            GetSettings();
         }
     }
 }

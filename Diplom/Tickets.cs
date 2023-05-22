@@ -18,14 +18,15 @@ namespace Diplom
     public partial class Tickets : Form
     {
         public int currTicketId;
-        int paginationSize = 10;
-        int totalPages;
-        int ticketsCount;
-        int currentPage = 1;
+        public int paginationSize = 10;
+        public int totalPages;
+        public int ticketsCount;
+        public int currentPage = 1;
 
         public Tickets()
         {
             InitializeComponent();
+            dtp_date.Value = DateTime.Today;
         }
 
         private void Tickets_Load(object sender, EventArgs e)

@@ -10,14 +10,29 @@
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">server=37.77.105.162;user id=Tarabotti;password=gGJ130T90!;persistsecurityinfo=True;database=Diplom</Value>
     </Setting>
-    <Setting Name="SmtpServer" Type="System.String" Scope="Application">
+    <Setting Name="SmtpServer" Type="System.String" Scope="User">
       <Value Profile="(Default)">smtp.gmail.com</Value>
     </Setting>
-    <Setting Name="SmtpEmail" Type="System.String" Scope="Application">
+    <Setting Name="SmtpEmail" Type="System.String" Scope="User">
       <Value Profile="(Default)">dennyharmless@gmail.com</Value>
     </Setting>
-    <Setting Name="SmtpPassword" Type="System.String" Scope="Application">
+    <Setting Name="SmtpPassword" Type="System.String" Scope="User">
       <Value Profile="(Default)">vzvmepndhxgecqko</Value>
+    </Setting>
+    <Setting Name="TimerNumber" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="LastChoice" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="TimerLeft" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="Email" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="DBUpdateTimer" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">5</Value>
     </Setting>
   </Settings>
 </SettingsFile>
